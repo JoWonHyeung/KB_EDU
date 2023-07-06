@@ -15,6 +15,17 @@ public class TwoDimArrayTest {
 			}
 			System.out.println();
 		}
+		
+		System.out.println("===========================");
+		int[][] twoArr2 = new int[2][];
+		
+		System.out.println(twoArr2.length);
+		
+		twoArr2[0] = new int[3];
+		twoArr2[1] = new int[6];
+		
+		System.out.println(twoArr2[0].length);
+		System.out.println(twoArr2[1].length);
 
 	}
 
