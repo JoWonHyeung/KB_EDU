@@ -26,7 +26,7 @@ public class CustomerService {
 	}
 	
 	//3. 모든 고객중에서 특정한 고객을 검색...
-	//find, search... 검색관련 기능은 왼쪽 접두어를 사용한다. 어떤 수단으로 ..by???..
+	//find, search... 검색관련 기능은 왼쪽의 접두어들을 사용한다. 어떤 수단으로 ..by???..
 	public Customer findCustomer(Customer[] custs, int ssn) { // findCustomerBySsn 이것도 괜춘... 강사님은 이것도 오버로딩이라고 생각하신다.
 		Customer customer = null; // 리턴타입이 있으면 바로 선언할 것
 		for(Customer cust : custs) {

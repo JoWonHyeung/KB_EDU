@@ -47,7 +47,6 @@ public class BankTest1 {
 		//	 통장의 이름과 해당 잔액을 출금
 		double balance = Integer.MIN_VALUE;
 		String bankName = "";
-		
 		for(Account account : cust.getAccounts()) {
 			if(balance < account.getBalance()) {
 				balance = account.getBalance();

@@ -25,7 +25,6 @@ public class Product {
 		this.maker = maker;
 	}
 
-
 	public int getPrice() {
 		return price;
 	}

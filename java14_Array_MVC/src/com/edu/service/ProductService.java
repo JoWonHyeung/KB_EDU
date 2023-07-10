@@ -54,5 +54,3 @@ public class ProductService {
 	}
 	
 }
-
-//중요!!!!!! 클래스 내부 메소드하나당 하나의 서비스
