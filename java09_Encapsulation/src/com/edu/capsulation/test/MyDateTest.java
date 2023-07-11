@@ -23,8 +23,8 @@ public class MyDateTest {
 		int day = sc.nextInt();
 		
 		/*
-		 * 다른 클래스(~~Test)에서 field에 직접적으로 접근을 못하게 해야한다.
-		 * invalid한 값이 필드에 저장되지 못하게 막아야 한다. 
+		 다른 클래스(~~Test)에서 field에 직접적으로 접근을 못하게 해야한다.
+		 invalid한 값이 필드에 저장되지 못하게 막아야 한다. 
 		 */
 		
 		//md.month = 33;

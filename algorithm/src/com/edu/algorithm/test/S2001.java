@@ -2,7 +2,7 @@ package com.edu.algorithm.test;
 
 import java.util.Scanner;
 
-public class S1210 {
+public class S2001 {
 	static final int N = 100;
 	static int[] dx = {0,0,-1} ;
 	static int[] dy = {1,-1,0} ;

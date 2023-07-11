@@ -12,11 +12,10 @@ package com.edu.capsulation;
  * Encapsulation 작성 Pattern
  * 1. field앞 --- private
  * 2. method(setter | getter)앞 --- public
- * 3. setter메소드 필드초기화 하기 직전에
- * 타당한 값만 필드에 저장되도록 접근을 허용
+ * 3. setter메소드 필드초기화 하기 직전에 타당한 값만 필드에 저장되도록 접근을 허용
  */
 public class MyDate {
-	//private:같은 클래스에서만 접근을 허용
+	//private: 같은 클래스에서만 접근을 허용
 	private int month;
 	private int day;
 	

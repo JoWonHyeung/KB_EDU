@@ -17,7 +17,7 @@ public class NoteBookTest {
 		nb1.brand = "HP";
 		System.out.println(nb1.getNoteBookInfo());
 		
-		NoteBook nb2 = new NoteBook();
+		//NoteBook nb2 = new NoteBook("");
 		
 	}
 
