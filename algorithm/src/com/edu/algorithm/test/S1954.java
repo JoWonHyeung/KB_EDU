@@ -39,7 +39,7 @@ public class S1954 {
                         || map[ci + dx[dr]][cj + dy[dr]] != 0) {
                     dr = (dr + 1) % 4;
                 }
-            }
+            }// (dr + 3) % 4 -> 3 2 1 0 3 2 1 0 .....
              
             System.out.printf("#%d\n",i);
              

@@ -14,15 +14,28 @@ public class B2018 {
 		
 		int N  = Integer.parseInt(st.nextToken());
 		int[] nums = new int[N + 1];
-		int answer = 0;
-		int lt = 1;
-		int rt = 1;
+		int cnt = 1;
+		int lt = 1; int rt = 1;
+		int sum = 1;
 		
 		for(int i = 1; i <= N; i++) nums[i] = i;
 		
+		while(rt != N) {
+			if(sum == N) {
+				cnt += 1;
+				rt++;
+				sum += nums[rt];
+			}
+			else if(sum > N) {
+				sum -= nums[lt];
+				lt++;
+			} else {
+				rt++;
+				sum += nums[rt];
+			}
+		}
 		
-		
-		
+		System.out.println(cnt);
 	}
 
 }
