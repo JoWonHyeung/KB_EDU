@@ -2,6 +2,7 @@ package com.edu.algorithm.test;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -19,22 +20,14 @@ public class B2493 {
 		
 		st = new StringTokenizer(br.readLine());
 		int N = Integer.parseInt(st.nextToken());
-		Stack<Integer> stk = new Stack<>();
-		Stack<Integer> res = new Stack<>();
+		Stack<Integer> stk = new Stack<>();		
+		Stack<Integer> res = new Stack<>();		
+		
+		Stack<HashMap<Integer, Integer>> s = new Stack<>();
 		
 		
 		
-		st = new StringTokenizer(br.readLine(), " ");
-			
-		for(int i = 0; i < N; i++)
-			stk.add(Integer.parseInt(st.nextToken()));
 		
-		/*
-		 * Main Code
-		 */
-		
-		
-		System.out.println(stk.toString());
 			
 	}
 
