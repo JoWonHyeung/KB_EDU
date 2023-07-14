@@ -1,16 +1,11 @@
 package com.edu.algorithm.test;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 /*
  * 입력을 Scanner로 받는 경우
  * BufferedReader
  * StringBuilder
- * 
  */
 public class B11660 {
 

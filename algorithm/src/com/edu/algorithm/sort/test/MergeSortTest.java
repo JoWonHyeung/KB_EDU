@@ -1,4 +1,4 @@
-package com.edu.algorithm.test;
+package com.edu.algorithm.sort.test;
 
 public class MergeSortTest {
 	static int[] arr = new int[] {3, 2, 3, 4, 6, 1};

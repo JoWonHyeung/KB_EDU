@@ -1,4 +1,4 @@
-package com.edu.algorithm.test;
+package com.edu.algorithm.pc.test;
 
 
 public class PermutationTest {
@@ -6,20 +6,19 @@ public class PermutationTest {
 	static boolean[] isVisited = new boolean[4];
 	static int[] ans = new int[3];
 	
-	static void dfs(int n, int s) {
+	static void dfs(int n) {
 		if(n == 3) {
 			for(int a : ans)
 				System.out.print(a + " ");
 			System.out.println();
 			return;
-		}
-		else {
+		} else {
 			
-			for(int i = s; i < arr.length; i++) {
+			for(int i = 0; i < arr.length; i++) {
 				if(isVisited[i] == false) {
 					isVisited[i] = true;
 					ans[n] = arr[i];
-					dfs(n + 1, s + 1);
+					dfs(n + 1);
 					isVisited[i] = false;
 				}
 			}
@@ -27,7 +26,7 @@ public class PermutationTest {
 	}
 	
 	public static void main(String[] args) {
-		dfs(0, 0);
+		dfs(0);
 	}
 
 }
