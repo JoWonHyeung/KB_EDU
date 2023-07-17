@@ -10,6 +10,7 @@ public class S5215 {
 	static int MAX;
 	
 	public static void dfs(int L, int score, int calory) {
+		if(calory > lim) return;
 		if(L == N) {
 			if(calory <= lim && score >= MAX) { //제한 칼로리보다 적고, 최대값 점수보다 클 때 점수 갱신
 				MAX = score;
