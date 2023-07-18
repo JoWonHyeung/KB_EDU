@@ -34,8 +34,5 @@ public class B1931 {
 		}
 		
 		System.out.println(answer);
-		System.out.println(Arrays.deepToString(infos));
-		
 	}
-
 }
