@@ -24,14 +24,13 @@ public class B14889 {
 		}
 		
 		//[1] 각 팀 점수 구하기
-		for(int ci = 0; ci < N / 2; ci++) 
-			for(int cj = ci + 1; cj  < N / 2; cj++) 
+		for(int ci = 0; ci < N / 2; ci++) { 
+			for(int cj = ci + 1; cj  < N / 2; cj++) {
 				starScore += map[star[ci]][star[cj]] + map[star[cj]][star[ci]]; 
-		
-		for(int ci = 0; ci < N / 2; ci++) 
-			for(int cj = ci + 1; cj  < N / 2; cj++) 
 				linkScore += map[link[ci]][link[cj]] + map[link[cj]][link[ci]];
-		
+			}
+		}
+				
 		return new int[] {starScore, linkScore};
  	}
 	

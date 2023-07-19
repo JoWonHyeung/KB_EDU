@@ -12,9 +12,9 @@ public class S13992 {
 	static int MIN;
 	
 	static void dfs(int L, int sum, int node) {
+		if(sum > MIN) return;
 		if(L == N && node == 0) { //전부다 방문하고 마지막 노드 지점이 0일때 종료
-			if(MIN > sum)
-				MIN = sum;
+			MIN = Math.min(MIN, sum);
 			
 		} else {
 			for(int i = 0; i < N; i++) {

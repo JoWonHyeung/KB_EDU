@@ -7,12 +7,10 @@ import java.util.StringTokenizer;
 public class B9663 {
 	
 	static int N;
-	static int[] dx = {-1,-1,0,1,1, 1, 0,-1};
-	static int[] dy = { 0, 1,1,1,0,-1,-1,-1};
+	static int[] dx = {-1,-1,0,1,1, 1, 0,-1}, dy = { 0, 1,1,1,0,-1,-1,-1};
 	static int[][] board;
 	static boolean[] ch;
 	static int cnt;
-	
 	
 	static boolean getCheck(int x, int y) {
 		for(int si = 1; si <= N; si++) {
