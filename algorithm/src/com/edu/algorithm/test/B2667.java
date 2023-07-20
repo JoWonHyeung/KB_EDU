@@ -39,8 +39,6 @@ public class B2667 {
 		map = new char[N][N];
 		isVisited = new boolean[N][N];
 		
-		StringBuilder sb = new StringBuilder();
-		
 		for(int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			String temp = st.nextToken();

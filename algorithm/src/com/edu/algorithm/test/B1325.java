@@ -1,57 +1,81 @@
 package com.edu.algorithm.test;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collections;
-
-import java.util.StringTokenizer;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class B1325 {
-
-	static int N, M;
-	static ArrayList<Integer> graph[]; 
-	static int MAX = Integer.MIN_VALUE;
-	static int resIdx;
 	
-	static int bfs(int start) {
-		int cnt = 0;
+	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+	static int[] result;
+	static boolean[] isVisited;
+
+	static void bfs(int node) {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(node);
+		isVisited[node] = true;
 		
-		return cnt;
+		while(!q.isEmpty()) {
+			int now = q.poll();
+			
+			for(int next : graph.get(now)) {
+				if(!isVisited[next]) {
+					isVisited[next] = true;
+					q.add(next);
+					result[next]++;
+				}
+			}
+		}
+
 	}
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws IOException  {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
+		 String[] nm = br.readLine().split(" ");
+		 int N = Integer.parseInt(nm[0]);
+	     int M = Integer.parseInt(nm[1]);
 
-		graph = new ArrayList[N + 1];
+		result = new int[N + 1];
+		int MAX = 0;
 		
+		for(int i = 0; i <= N; i++) graph.add(new ArrayList<>());
 		
-		for(int i = 0; i <= N; i++) {
-			graph[i] = new ArrayList<>();
-			
-		}
-		
-		for(int i = 1; i <= M; i++) {
-			st = new StringTokenizer(br.readLine(), " ");
-			int a = Integer.parseInt(st.nextToken());
-			int b = Integer.parseInt(st.nextToken());
-			graph[a].add(b);
+		for(int i = 0; i < M; i++) {
+			String[] fromTo = br.readLine().split(" ");
+			int from = Integer.parseInt(fromTo[0]);
+			int to = Integer.parseInt(fromTo[1]);
+			graph.get(from).add(to);
 		}
 		
 		/*
 		 * Main Code
 		 */
 		
-		for(int i = 1; i <= M; i++) {
-			Collections.sort(graph[i]);
+		for(int i = 1; i <= N; i++) {
+			isVisited = new boolean[N + 1];
+			bfs(i);
 		}
 		
 		
+		for(int i = 1; i <= N; i++)
+			MAX = Math.max(result[i], MAX);
 		
+		 for (int i = 1; i <= N; i++) {
+	            if(result[i] == MAX) {
+	                bw.write(i + " ");
+	            }
+	        }
+
+        bw.flush();
+        bw.close();
+	
 	}
 
 }
