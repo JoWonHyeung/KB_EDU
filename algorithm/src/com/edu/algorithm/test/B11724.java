@@ -1,14 +1,12 @@
-package com.edu.algorithm.exam.test;
+package com.edu.algorithm.test;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class kb2반_알고리즘1번_조원형 {
+public class B11724 {
 
 	static int[] parents;
-	static int answer;
 	
 	static void Union(int a, int b) {
 		int x = Find(a);
@@ -22,15 +20,13 @@ public class kb2반_알고리즘1번_조원형 {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));	//	파일로부터 읽기
-		StringTokenizer st = new StringTokenizer(br.readLine());
-
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken());
-		
-		st = new StringTokenizer(br.readLine());
 		int M = Integer.parseInt(st.nextToken());
-		parents = new int[N + 1];
+		int answer = 0;
 		
+		parents = new int[N + 1];
 		for(int i = 1; i <= N; i++) parents[i] = i;
 		
 		for(int i = 0; i < M; i++) {
@@ -38,17 +34,14 @@ public class kb2반_알고리즘1번_조원형 {
 			int s = Integer.parseInt(st.nextToken());
 			int e = Integer.parseInt(st.nextToken());
 			
-			Union(s,e);
+			Union(s, e);
 		}
-				
 		
-		for(int i = 2; i <= N; i++) {
-			if(parents[i] == 1)
-				answer++;
+		for(int i = 1; i <= N; i++) {
+			if(parents[i] == i) answer++;
 		}
 		
 		System.out.println(answer);
-	
 		
 	}
 

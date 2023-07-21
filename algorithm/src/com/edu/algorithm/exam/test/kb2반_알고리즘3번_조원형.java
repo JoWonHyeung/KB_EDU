@@ -7,94 +7,39 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class kb2반_알고리즘3번_조원형 {
-	static int N = 19;
-	static int[][] map = new int[N][N];
-	static int[] dx = {-1,-1, 0, 1, 1, 1, 0, -1};
-	static int[] dy = { 0, 1, 1, 1, 0,-1, -1,-1};
-	static boolean flag = false;
-	static int ansX, ansY = 0;
 	
-	static boolean getCheck(int nowX, int nowY, int target) {
-		// 8방향 체크하면서 사이즈 늘리기
-		for(int ci = 0; ci < 8; ci++) { 
-			int checkNum = 1;
+	static int N, M;
+	static int[] arr;
+	static int MAX = Integer.MIN_VALUE;
+	
+	static void dfs(int L, int pos, int size) {
+		if(L == M) { //시간을 다 썻을 경우 최댓값 갱신
+			MAX = Math.max(MAX, size);
+		}else {
+			if(pos + 1 <= N)
+				dfs(L + 1, pos + 1, size + arr[pos + 1]);
 			
-			//진행방향
-			for(int cj = 1; cj <= 18; cj++) {
-				int nx = nowX + cj * dx[ci];
-				int ny = nowY + cj * dy[ci];
-				
-				//그 다음 좌표값이 오목판을 벗어나면 연속된 돌이 5개일 경우가 없을 것이므로
-				//바로 탈출시킨다.
-				if(nx < 0 || ny < 0 || nx > N - 1 || ny > N - 1) continue;
-				if(map[nx][ny] == target) //연속된 돌일 경우 체크한다.
-					checkNum++;
-			}
-			
-			//반대방향
-			for(int cj = 1; cj <= 18; cj++) {
-				int nx = nowX + cj * -dx[ci];
-				int ny = nowY + cj * -dy[ci];
-				
-				//그 다음 좌표값이 오목판을 벗어나면 연속된 돌이 5개일 경우가 없을 것이므로
-				//바로 탈출시킨다.
-				if(nx < 0 || ny < 0 || nx > N - 1 || ny > N - 1) continue;
-				if(map[nx][ny] == target) //연속된 돌일 경우 체크한다.
-					checkNum++;
-			}
-			
-			//같은 돌 5개일 때 true 반환하고,
-			//좌표값저장한다.
-			if(checkNum == 5) {   
-				ansX = nowX + 1; 
-				ansY = nowY + 1;
-				return true;
-			}
+			if(pos + 2 <= N)
+				dfs(L + 1, pos + 2, (int)Math.floor(size / 2) + arr[pos + 2]);
 		}
-		return false;
 	}
 	
 	public static void main(String[] args) throws Exception {
-		/*
-		 * Input
-		 */
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int ans = 0;
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
-		for(int i = 0; i < N; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			for(int j = 0; j < N; j++) {
-				map[i][j] = Integer.parseInt(st.nextToken());
-			}
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		arr = new int[N + 2];
+		arr[0] = 1; arr[N + 1] = 0;
+		st = new StringTokenizer(br.readLine(), " ");
+		for(int i = 1; i <= N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		/*
-		 * Main Code
-		 */
+		dfs(0, 0, 1);
 		
-		//좌표들을 완전 탐색하면서, 연속된 돌이 5개일 경우를 찾는다.
-		for(int ci = 0; ci < N; ci++) {
-			for(int cj = 0; cj < N; cj++) {
-				if(map[ci][cj] == 1 && getCheck(ci, cj, 1)) { //연진 체크
-					ans = 1;
-					flag = true; break;
-				} else if(map[ci][cj] == 2 && getCheck(ci, cj, 2)) { //동은 체크
-					ans = 2;
-					flag = true; break;
-				}
-			}
-			
-			if(flag) //이미 이겼으므로, 이후 연산이 필요없다. 따라서 탈출시킨다.
-				break;
-		}
-		
-		//첫째줄 답
-		System.out.println(ans);
-		
-		//두번째줄 답
-		if(flag) 
-			System.out.println(ansX + " " + ansY);
-		 
+		System.out.println(MAX);
 	}
 
 }
