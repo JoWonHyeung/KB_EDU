@@ -7,7 +7,7 @@ public class Customer {
 	private String name;
 	private String address;
 	
-	private Product[] products;
+	private Product[] products; //Hasing관계에서는 setter주입을 많이 한다.
 
 	public Customer() {}
 	public Customer(int ssn, String name, String address) {
