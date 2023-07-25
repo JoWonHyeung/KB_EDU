@@ -20,7 +20,7 @@ import com.edu.parent.Employee;
  	public void InsertEngineer(Engineer e) {//}
  	public void secretaryPlus(Secretary c) {//}
  	
- 	step1.
+ 	step2.
  	>>> 추가 관련된 기능..C
  	public void addManager(Manager m) {//}
  	public void addEngineer(Engineer e) {//}
@@ -28,7 +28,7 @@ import com.edu.parent.Employee;
  	
  II. 상속을 진행했을 때
  				Employee
- 					|
+ 				   |
  Manager		Engineer		Secretary
  
  Employee타입으로 이기종간의 서브클래스들을 단일하게 관리할 수 있다.

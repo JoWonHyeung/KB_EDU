@@ -7,6 +7,20 @@ import com.edu.service.EmployeeService;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
+	//(1)
+	static final EmployeeServiceImpl service = new EmployeeServiceImpl();
+	
+	//(2)
+	private EmployeeServiceImpl() {
+		System.out.println("Client Request Ready...");
+	}
+	
+	//(3)
+	public static EmployeeServiceImpl getInstance() {
+		return service;
+	}
+	
+	
 	//1. 모든 직원의 정보를 출력하는 기능...일단 선언부만 작성 / 구현부는 나중에
 	public void printAllEmployee(Employee[] emps) {
 		for(Employee e : emps)
