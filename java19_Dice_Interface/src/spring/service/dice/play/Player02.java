@@ -12,18 +12,18 @@ import spring.service.dice.Dice;
  */
 public class Player02 {
 	
-	///Field 
+	//Field 
 	private Dice dice; //재사용성(유지보수)이 낮은 코드!!! 주사위 하나가 추가되면 플레이어가 추가되어야 한다.
 	private int totalValue;
 	
-	///Constructor Method
+	//Constructor Method
 	public Player02() {}
 	public Player02(Dice dice) {
 		super();
 		this.dice = dice;
 	}
 
-	///Method (getter/setter)
+	//Method (getter/setter)
 	public Dice getDice() {
 		return dice;
 	}

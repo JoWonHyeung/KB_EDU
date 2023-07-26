@@ -8,7 +8,7 @@ import com.edu.service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	//(1)
-	static final EmployeeServiceImpl service = new EmployeeServiceImpl();
+	static private EmployeeServiceImpl service = new EmployeeServiceImpl();
 	
 	//(2)
 	private EmployeeServiceImpl() {

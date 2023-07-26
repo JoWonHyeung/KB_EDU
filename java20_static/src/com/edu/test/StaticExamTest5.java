@@ -17,7 +17,6 @@ package com.edu.test;
  	이때 반드시 static한 성질의 메소드로 만들어둔다.
  	public static ServiceImpl getInstance()
  */
-
 class ServiceImpl{
 	static private ServiceImpl service = new ServiceImpl();//1
 	
