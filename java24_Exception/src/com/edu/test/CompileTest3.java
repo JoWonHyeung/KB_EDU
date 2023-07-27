@@ -20,7 +20,7 @@ class FileReading2{
 
 public class CompileTest3 {
 
-	public static void main(String[] args) throws Exception { //이러면 close() 함수같은 누수 방지 불가
+	public static void main(String[] args) throws Exception { 
 		FileReading2 fr = new FileReading2();
 		
 		fr.readFile("C:\\KB_EDU\\doc\\CatchAMouse1.png");

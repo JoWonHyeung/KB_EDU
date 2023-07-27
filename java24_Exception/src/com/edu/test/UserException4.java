@@ -3,7 +3,6 @@ package com.edu.test;
 
 class ZeroBoom extends Exception{ //가장 정확하게 만들어진 사제 폭탄... 사용자 정의 Exception
 	
-	
 	ZeroBoom() {
 		this("This is ZeroBoom Exception...");
 	}
