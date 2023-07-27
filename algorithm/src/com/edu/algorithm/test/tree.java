@@ -1,6 +1,6 @@
 package com.edu.algorithm.test;
 
-public class treeTest {
+public class tree {
 
 	static char[] spellings = {'X','A','B','C','D','E','F','G','H','I','J'};
 	

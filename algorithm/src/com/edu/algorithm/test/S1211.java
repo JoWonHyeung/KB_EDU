@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class S1211_v1 {
+public class S1211 {
 	
 	static int getMaxCatchInsect(int[][] arr, int n, int m) {
 		int result = Integer.MIN_VALUE;
