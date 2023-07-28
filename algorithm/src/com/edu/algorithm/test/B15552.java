@@ -20,7 +20,6 @@ public class B15552 {
 			sb.append(a + b + "\n");
 		}
 		System.out.println(sb);
-
 	}
-
+	
 }
