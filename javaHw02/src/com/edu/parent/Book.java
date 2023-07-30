@@ -52,6 +52,10 @@ public class Book{
 		return isbn + "\t | " + title + "\t | " + price + "\t | " + quantity;
 	}
 
-	
+	@Override
+	public boolean equals(Object b) {
+		if(((Book)b).getIsbn().equals(isbn)) return true;
+		else return false;
+	}
 	
 }

@@ -14,51 +14,73 @@ public class BookServiceImpl implements BookService {
 	private static BookServiceImpl mgr = new BookServiceImpl();
 
 	private BookServiceImpl() {
-		System.out.println("»ı¼ºÀÚ È£Ãâ");
 		list = new ArrayList<Book>();
-	
 	}
 
 	public static BookServiceImpl getInstance() {
 		return mgr;
 	}
-
+	
 	@Override
 	public void add(Book b) {
+		boolean flag = false;
 		
-		//¸®½ºÆ®¿¡ bookÀ» Ãß°¡
+		for(Book book : list) {
+			if(book.getIsbn().equals(b.getIsbn())) {
+				System.out.println("í•´ë‹¹ ì±…ì´ ì´ë¯¸ ì¡´ì¬í•©ë‹ˆë‹¤.");
+				flag = true;
+				break;
+			}
+		}
+		
+		if(!flag) list.add(b); 
 	}
 
 	@Override
 	public List<Book> search() {
-		//¸ğµç bookÀ» ¹İÈ¯
-		return null;
+		return list;
 	}
 
 	@Override
 	public void sell(String isbn, int quantity) throws QuantityException, ISBNNotFoundException {
+		boolean flag = false;
 		
-			/*
-			   1.ÆÈ·Á´Â Ã¥ÀÌ ÀÖÁö¸¸ Àç°í°¡ ºÎÁ·ÇÏ´Ù¸é QuantityException ¿¹¿Ü¸¦ ¹ß»ı
-			   2.ÆÈ·Á´Â Ã¥ÀÌ ÀÖ°í Àç°íµµ ³Ë³ËÇÏ´Ù¸é ±âÁ¸ÀÇ ¼ö·®À» ¾÷µ¥ÀÌÆ®ÇÔ
-			   3.ÆÈ·Á´Â Ã¥ÀÇ isbnÀ» ¹ß°ßÇÏÁö ¸øÇÏ¸é ISBNNotFoundException ¿¹¿Ü¸¦ ¹ß»ı
-			*/
-			
+		for(Book book : list) {
+			if(book.getIsbn().equals(isbn)) {
+				flag = true;
+				if(book.getQuantity() >= quantity) 
+					book.setQuantity(book.getQuantity() - quantity);
+				else 
+					throw new QuantityException(); //ìš”ì²­ ìˆ˜ëŸ‰ì´ ë” ë§ì„ ê²½ìš°
+				break;
+			}
+		}
+		
+		if(!flag) throw new ISBNNotFoundException(); //í•´ë‹¹ ì±…ì„ ì°¾ì§€ ëª»í–ˆì„ ê²½ìš°
 	}
 
 	@Override
 	public void buy(String isbn, int quantity) throws ISBNNotFoundException{
-		/*
-		  1. ±¸¸ÅÇÏ·Á´Â isbnÀ» Ã£À»¼ö ¾øÀ¸¸é ISBNNotFoundException ¿¹¿Ü¸¦ ¹ß»ı
-		  2. ±¸¸ÅÇÏ·Á´Â isbnÀÌ ÀÖ´Ù¸é ÃÑ Ã¥ÀÇ ¼ö·®À» ¾÷µ¥ÀÌÆ® ½ÃÅ´
-		 
-		 */		
+		boolean flag = false;
+		
+		for(Book book : list) {
+			if(book.getIsbn().equals(isbn)) {
+				flag = true;
+				book.setQuantity(book.getQuantity() + quantity);
+				break;
+			}
+		}
+		
+		if(!flag) throw new ISBNNotFoundException();
 	}
 
 	@Override
 	public int getTotalAmount() {
-		// µµ¼­°üÀÇ ¸ğµç Ã¥ÀÇ ÃÑ °¡°İ±İ¾×À» ¹İÈ¯
-		return 0;
+		int temp = 0;
+		for(Book book : list) 
+			temp += book.getPrice() * book.getQuantity();
+		
+		return temp;
 	}
 
 }

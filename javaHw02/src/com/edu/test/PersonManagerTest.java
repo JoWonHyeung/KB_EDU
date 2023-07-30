@@ -6,6 +6,8 @@ import com.edu.domain.Employee;
 import com.edu.domain.Person;
 import com.edu.domain.Student;
 import com.edu.domain.Teacher;
+import com.edu.exception.DuplicatedPersonException;
+import com.edu.exception.SSNNotFoundException;
 import com.edu.service.Manager;
 
 
@@ -20,30 +22,30 @@ public class PersonManagerTest {
 		Teacher t2 = new Teacher(5555,"EEE",40,"�Ǳ�","I-Phone");
 		System.out.println("========================= addPerson() =================================\n");
 		
+		try {
+			manager.addPerson(s1);		
+			manager.addPerson(s2);
+			manager.addPerson(e1);
+			manager.addPerson(t1);
+			manager.addPerson(t2);	
+		}catch (DuplicatedPersonException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		manager.addPerson(s1);		
-		manager.addPerson(s2);
-		manager.addPerson(e1);
-		manager.addPerson(t1);
-		manager.addPerson(t2);	
-	
-		
-		//manager.getPersons();
-		
-		
+//		manager.getPersons();
 	
 		System.out.println("\n");
 		System.out.println("============================ deletePerson() =============================\n");
 		
-		manager.deletePerson(4444);	
+//		manager.deletePerson(4444);	
 		
 		//manager.getPersons();
 	
 	
 		System.out.println("\n");
 		System.out.println("============================= findPerson(int ssn) ===============================\n");
-		Person p = manager.findPerson(5555);
-		System.out.println("findPerson(ssn) :: "+p.getName());
+//		Person p = manager.findPerson(5555);
+//		System.out.println("findPerson(ssn) :: "+p.getName());
 		
 		
 	
