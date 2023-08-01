@@ -7,8 +7,7 @@ public class Member {
 	private String phone;
 	
 	public Member() {}
-	
-	public Member(String name, String email, String phone) {
+	public Member(String name, String email, String phone) { 
 		super();
 		this.name = name;
 		this.email = email;

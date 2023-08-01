@@ -23,7 +23,7 @@ public class MemberDAOImpl implements MemberDAO{
 		return dao;
 	}
 	
-	///////// DB Connection
+	////////// Common Logic
 
 	public Connection getConnect() throws SQLException {
 		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
@@ -43,41 +43,47 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	////////// Business Logic
-	public int getId(Connection conn) throws SQLException {
+	public boolean idExists(int id, Connection conn)throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT id FROM member WHERE id=?";
+		ps=  conn.prepareStatement(query);
+		ps.setInt(1, id);
+		rs = ps.executeQuery();
+		return rs.next();
+	}
+	
+	private int getId(Connection conn) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
+        String query = "SELECT seq_id.nextVal FROM dual";
 
-        String query = "SELECT seq_id.nextVal FROM member";
-        ps = conn.prepareStatement(query);
-
-        rs = ps.executeQuery();
-        int sv = 0;
-        if(rs.next()) {
-            sv = rs.getInt(1);
-        }
-        return sv;
+        rs = conn.prepareStatement(query).executeQuery();
+        rs.next();
+        
+        return rs.getInt(1);
     }
-	
 	
 	@Override
 	public void insertMember(Member m) throws SQLException, DuplicateIDException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
-		try {
+		try {	
 			conn = getConnect();
-			m.setId(getId(conn));
-			
-			String query = "INSERT INTO member (id, name, email, phone) VALUES (seq_id.nextVal, ?, ?, ?)";
-			
-			ps = conn.prepareStatement(query);
-			ps.setString(1,m.getName());
-			ps.setString(2,m.getEmail());
-			ps.setString(3,m.getPhone());
-			
-			if(ps.executeUpdate() != 1) 
-				throw new DuplicateIDException();
-			
+			if(!idExists(m.getId(), conn)) {
+				String query = "INSERT INTO member (id, name, email, phone) VALUES (seq_id.nextVal, ?, ?, ?)";
+				ps = conn.prepareStatement(query);
+				
+				ps.setString(1,m.getName());
+				ps.setString(2,m.getEmail());
+				ps.setString(3,m.getPhone());
+				
+				System.out.println(ps.executeUpdate() + " 명 회원 생성 완료");
+			}else {
+				throw new DuplicateIDException("[insertMember] Duplicated id....");
+			}
 		}finally {
 			closeAll(conn, ps);
 		}
@@ -92,15 +98,16 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			String query = "DELETE member WHERE id=?";
-			ps = conn.prepareStatement(query);
-			
-			ps.setInt(1, id);
-			
-			if(ps.executeUpdate() != 1) 
-				throw new RecordNotFoundException();
-			
-			
+			if(idExists(id, conn)) {
+				String query = "DELETE member WHERE id=?";
+				ps = conn.prepareStatement(query);
+				
+				ps.setInt(1, id);
+				
+				System.out.println(ps.executeUpdate() + "명 삭제 완료");
+			}else {
+				throw new RecordNotFoundException("[deleteMember] Record Not Found....");
+			}
 		}finally {
 			closeAll(conn, ps);
 		}
@@ -114,17 +121,19 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			String query = "UPDATE member SET name=?, email=?, phone=? WHERE id=?";
-			ps = conn.prepareStatement(query);
-			
-			ps.setString(1, m.getName());
-			ps.setString(2, m.getEmail());
-			ps.setString(3, m.getEmail());
-			ps.setInt(4, m.getId());
-			
-			if(ps.executeUpdate() != 1) 
-				throw new RecordNotFoundException();
-			
+			if(idExists(m.getId(), conn)) {
+				String query = "UPDATE member SET name=?, email=?, phone=? WHERE id=?";
+				ps = conn.prepareStatement(query);
+				
+				ps.setString(1, m.getName());
+				ps.setString(2, m.getEmail());
+				ps.setString(3, m.getPhone());
+				ps.setInt(4, m.getId());
+				
+				System.out.println(ps.executeUpdate() + "명 회원 업데이트 완료");
+			}else {
+				throw new RecordNotFoundException("[updateMember] Record Not Found....");
+			}
 		}finally {
 			closeAll(conn, ps);
 		}
@@ -140,7 +149,7 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			String query = "SELECT name, email, phone FROM member WHERE id=?";
+			String query = "SELECT * FROM member WHERE id=?";
 			
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
@@ -148,9 +157,9 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = ps.executeQuery();
 			
 			if(rs.next())
-				return new Member(rs.getString("name"), rs.getString("address"), rs.getString("phone"));
+				return new Member(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("phone"));
 			else
-				throw new RecordNotFoundException();
+				throw new RecordNotFoundException("[getMember] Record Not Found...");
 			
 		}finally {
 			closeAll(conn, ps, rs);
@@ -169,6 +178,7 @@ public class MemberDAOImpl implements MemberDAO{
 			conn = getConnect();
 			
 			String query = "SELECT * FROM member";
+			
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			
@@ -191,10 +201,10 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			String query = "SELECT * FROM member WHERE id=?";
+			String query = "SELECT * FROM member WHERE name=?";
 			ps = conn.prepareStatement(query);
 			
-			ps.setInt(1, Integer.parseInt(id));
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) 
