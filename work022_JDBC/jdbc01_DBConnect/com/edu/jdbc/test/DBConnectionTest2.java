@@ -28,8 +28,8 @@ public class DBConnectionTest2 {
 			System.out.println("DB Connection... Success...");
 			
 			//3. PrepareStatement 객체 생성
-			//   custome테이블에 하나의 행을 추가하는 쿼리문
-			String query  = "INSERT INTO custom (id, name, address) VALUES(?,?,?)";
+			//   custom테이블에 하나의 행을 추가하는 쿼리문
+			String query  = "INSERT INTO custom (id, name, address) VALUES (?,?,?)"; //Insert Query 이런식으로 작성해서 null값 처리 가능
 			PreparedStatement ps = conn.prepareStatement(query);
 			System.out.println("Creating PreparedStatement....");
 			
@@ -41,7 +41,6 @@ public class DBConnectionTest2 {
 			//4. 쿼리문 실행 
 			int result = ps.executeUpdate(); //한 줄 넣어졌으면 1이 출력!!!
 			System.out.println(result);
-			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver Loading...Fail");
 		} catch (SQLException e) {
