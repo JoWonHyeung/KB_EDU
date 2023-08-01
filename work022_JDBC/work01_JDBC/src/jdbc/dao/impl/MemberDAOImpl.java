@@ -43,27 +43,33 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	////////// Business Logic
-	public boolean idExists(int id, Connection conn)throws SQLException{
+	private boolean idExists(int id)throws SQLException{
+		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT id FROM member WHERE id=?";
-		ps=  conn.prepareStatement(query);
-		ps.setInt(1, id);
-		rs = ps.executeQuery();
-		return rs.next();
+		try {
+			String query = "SELECT id FROM member WHERE id=?";
+			ps=  conn.prepareStatement(query);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			return rs.next();
+		}finally {
+			closeAll(conn,ps,rs);
+		}
+		
 	}
 	
-	private int getId(Connection conn) throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String query = "SELECT seq_id.nextVal FROM dual";
-
-        rs = conn.prepareStatement(query).executeQuery();
-        rs.next();
-        
-        return rs.getInt(1);
-    }
+//	private int getId(Connection conn) throws SQLException {
+//        PreparedStatement ps = null;
+//        ResultSet rs = null;
+//        String query = "SELECT seq_id.nextVal FROM dual";
+//
+//        rs = conn.prepareStatement(query).executeQuery();
+//        rs.next();
+//        
+//        return rs.getInt(1);
+//    }
 	
 	@Override
 	public void insertMember(Member m) throws SQLException, DuplicateIDException {
@@ -72,7 +78,7 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		try {	
 			conn = getConnect();
-			if(!idExists(m.getId(), conn)) {
+			if(!idExists(m.getId())) {
 				String query = "INSERT INTO member (id, name, email, phone) VALUES (seq_id.nextVal, ?, ?, ?)";
 				ps = conn.prepareStatement(query);
 				
@@ -98,7 +104,7 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			if(idExists(id, conn)) {
+			if(idExists(id)) {
 				String query = "DELETE member WHERE id=?";
 				ps = conn.prepareStatement(query);
 				
@@ -121,7 +127,7 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			conn = getConnect();
 			
-			if(idExists(m.getId(), conn)) {
+			if(idExists(m.getId())) {
 				String query = "UPDATE member SET name=?, email=?, phone=? WHERE id=?";
 				ps = conn.prepareStatement(query);
 				
