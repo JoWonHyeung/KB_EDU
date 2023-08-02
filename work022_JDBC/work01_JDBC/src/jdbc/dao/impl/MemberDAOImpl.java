@@ -24,7 +24,6 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	////////// Common Logic
-
 	public Connection getConnect() throws SQLException {
 		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
 		System.out.println("DB Connect....");
@@ -59,17 +58,6 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		
 	}
-	
-//	private int getId(Connection conn) throws SQLException {
-//        PreparedStatement ps = null;
-//        ResultSet rs = null;
-//        String query = "SELECT seq_id.nextVal FROM dual";
-//
-//        rs = conn.prepareStatement(query).executeQuery();
-//        rs.next();
-//        
-//        return rs.getInt(1);
-//    }
 	
 	@Override
 	public void insertMember(Member m) throws SQLException, DuplicateIDException {
@@ -163,7 +151,7 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = ps.executeQuery();
 			
 			if(rs.next())
-				return new Member(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("phone"));
+				return new Member(id, rs.getString("name"), rs.getString("email"), rs.getString("phone"));
 			else
 				throw new RecordNotFoundException("[getMember] Record Not Found...");
 			
@@ -214,7 +202,7 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = ps.executeQuery();
 			
 			while(rs.next()) 
-				temp.add(new Member(rs.getInt("id"),rs.getString("name"),rs.getString("email") ,rs.getString("phone")));
+				temp.add(new Member(rs.getInt("id"),id,rs.getString("email") ,rs.getString("phone")));
 			
 			return temp;
 		}finally {

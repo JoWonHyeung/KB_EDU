@@ -55,3 +55,17 @@ name varchar(30));
 INSERT INTO mymember (no, name) VALUES(seq_mymember.nextVal, '°­°¨Âù');
 
 SELECT * FROM mymember;
+
+/*
+work01_JDBC
+*/
+
+CREATE SEQUENCE seq_id
+START WITH 1
+INCREMENT BY 1;
+
+drop sequence seq_id;
+
+truncate table member;
+
+select * from member;
