@@ -24,7 +24,6 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	////////// Common Logic
-
 	public Connection getConnect() throws SQLException {
 		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
 		System.out.println("DB Connect....");
