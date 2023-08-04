@@ -8,13 +8,13 @@ import broker.twotier.vo.CustomerRec;
 public class DatabaseTest {
 
 	public static void main(String[] args) throws Exception {
-		Database db = new Database("127.0.0.1");
+		Database db = new Database("");
 		
-//		try {
-//			db.addCustomer(new CustomerRec("777-777","HaBaRee","다산동"));
-//		}catch(DuplicateSSNException e) {
-//			System.out.println(e.getMessage());
-//		}
+		try {
+			db.addCustomer(new CustomerRec("777-777","HaBaRee","다산동"));
+		}catch(DuplicateSSNException e) {
+			System.out.println(e.getMessage());
+		}
 //		
 //		try {
 //			db.deleteCustomer("777-777");
