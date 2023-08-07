@@ -1,0 +1,100 @@
+package jdbc.client;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import config.ServerInfo;
+import jdbc.dao.impl.MemberDAOImpl;
+import jdbc.dto.Member;
+import jdbc.exception.DuplicateIDException;
+import jdbc.exception.RecordNotFoundException;
+
+public class MemberDAOImplTest {
+
+	public static void main(String[] args) throws Exception {
+		MemberDAOImpl dao = MemberDAOImpl.getInstance();
+		
+		System.out.println("===================== [insertMember] ====================");
+		
+		try {
+			dao.insertMember(new Member("박혜수","a","a")); 	
+			dao.insertMember(new Member("윤아","b","b")); 
+			dao.insertMember(new Member("장동건","c","c")); 
+			dao.insertMember(new Member("정형돈","d","d")); 
+		}catch(DuplicateIDException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("===================== [deleteMember] ====================");
+		try {
+			dao.deleteMember(1);
+		}catch(RecordNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("===================== [updateMember] ====================");
+		dao.updateMember(new Member(3,"조원형","mesh153@naver.com","01036493276"));
+		
+		System.out.println("===================== [getMember(id) - 1] ====================");
+		System.out.println(dao.getMember(2));
+		
+		
+		System.out.println("===================== [getMember() - 2] ====================");
+		for(Member m : dao.getMember()) {
+			System.out.println(m);
+		}
+		
+		System.out.println("===================== [getMember(String) - 3] ====================");
+		for(Member m : dao.getMember("조원형")) {
+			System.out.println(m);
+		}
+		
+		System.out.println("===========================================================");
+		afterEach();
+	}
+
+	private static void beforeEach() throws SQLException{
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		PreparedStatement ps = null;
+		
+		String query = "CREATE SEQUENCE seq_id "
+				+ "START WITH 1 "
+				+ "INCREMENT BY 1";
+		
+		ps = conn.prepareStatement(query);
+		ps.executeUpdate();
+		
+	}
+	
+	private static void afterEach() throws SQLException {
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		PreparedStatement ps = null;
+		
+		String q1 = "DROP SEQUENCE seq_id";
+		String q2 = "truncate table member";
+		
+		ps = conn.prepareStatement(q1);
+		ps.executeUpdate();
+		
+		ps = conn.prepareStatement(q2);
+		ps.executeUpdate();
+		
+		System.out.println("Complete afterEach...");
+	}
+	
+	static {
+		try {
+			Class.forName(ServerInfo.DRIVER_NAME);
+			System.out.println("Driver Loading Success....");
+			
+			beforeEach();
+			System.out.println("beforeEach Success....");
+		}catch(ClassNotFoundException e) {
+			System.out.println("Driver Loading Fail....");
+		}catch(SQLException e) {
+			System.out.println("beforeEach Fail...");
+		}
+	}
+}

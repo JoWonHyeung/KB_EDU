@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	form{
+		width: 600px;
+		margin: 0 auto;
+	}
+	
+	h2{
+		text-align: center;
+		color: tomato;
+	}
+	
+	legend{
+		color: crimson;
+	}
+	
+</style>
+</head>
+<body>
+
+<h2>FORM TAGS...</h2>
+<!-- 다양한 입력 양식을 다 감싸는 태그 -->
+<form action="#">
+	<fieldset>
+		<legend>KB Form...</legend>
+			ID : <input type="text" name="id"> <br>
+			PWD : <input type="password" name="pass"> <br>
+			<hr>
+			Gender :
+			<input type="radio" name="gender" value="Female"> 여자
+			<input type="radio" name="gender" value="male"> 남자
+			<br><br>
+			<hr>
+			TODAY : <input type="date" name="date"><br><br>
+			NUMBER : <input type="number" name="number"><br><br>	
+			Guest Memo :
+			<textarea rows="5" cols="50">
+			intro memo...
+			</textarea>
+			<input type="submit" value="SEND">
+	</fieldset>
+</form>
+
+</body>
+</html>
