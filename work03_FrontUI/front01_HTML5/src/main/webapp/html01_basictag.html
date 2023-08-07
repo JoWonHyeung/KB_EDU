@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		function push(){
+			alert("버튼이 눌러졌어요~~!!");
+		}
+		
+		
+	</script>
+	
+	<style>
+	/*
+	전체 화면의 가로 사이즈를 지정... body태그를 선택자로 지정
+	*/
+	body {
+		width : 700px;
+		height : 450px;
+		margin : 0 auto;
+	}
+	
+	#order{
+		float:left;
+		width:300px;
+	}
+	
+	#unorder{
+		float:right;
+		width:300px;
+	}
+	
+	/* id값이 header인 태그를 선택자로 지정, 글자색을 orange로 지정 */
+	#header{
+		color:tomato;
+	}
+	
+	/* id값이 order, unorder 태그를 선택자로 지정, 배경색을 gray로 지정*/
+	#order, #unorder{
+		background-color:gray;
+		border: 1px solid black;
+	}
+	
+	button{
+		
+	}
+	
+	
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1>This is heading 1</h1>
+		<h2>This is heading 2</h2>
+		<h3>This is heading 3</h3>
+		<h4>This is heading 4</h4>
+		<h5>This is heading 5</h5>
+		<h6>This is heading 6</h6>
+	</div>
+	<div id="order">
+		<p>Order List</p>
+		<p>순번을 가지는 목록 리스트</p>
+		<p>Blocking Tag</p>
+		<ol>
+			<li><a href='http://java.sun.com'>Java</a></li>
+			<li>Python</li>
+			<li><a href='https://www.w3schools.com'>Html</a></li>
+			<li>Vue.js</li>
+		</ol>
+	</div>
+`	<div id="unorder">
+		<p>UnOrder List</p>
+		<p>순번을 가지는 목록 리스트</p>
+		<p>Blocking Tag</p>
+		<ul>
+			<li><a href='http://java.sun.com'>Java</a></li>
+			<li>Python</li>
+			<li><a href='https://www.w3schools.com'>Html</a></li>
+			<li>Vue.js</li>
+		</ul>
+	</div>
+	<hr>
+	<!-- 버튼 클릭하면 팝업창 하나 뜨도록  -->
+	<button onclick = 'push()'>눌러주세요</button>
+	
+</body>
+</html>
