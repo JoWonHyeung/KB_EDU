@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#parent{
+		border: 1px solid black;
+		padding: 10px;
+		
+		overflow: hidden;/* 부모에 지정한다. */
+	}
+	
+	#child{
+		border: 1px solid tomato;
+		margin: 0;
+		float: left;
+	}
+	
+	#article{
+		border: 1px solid blue;
+		margin: 0px;
+		height: 30px;
+		float: right;
+	}
+	
+	/*
+	
+	자식요소에서 float사용할 경우
+	부모요소의 범위를 벗어나게 된다...
+	결과적으로 레이아웃이 망가진다...
+	
+	1.부모요소의 범위를 아주 크게 잡아버린다
+	2.overflow를 지정한다. hidden으로 지정한다... 부모요소에 지정해야 한다...
+	
+	*/
+	
+</style>
+</head>
+<body>
+
+<div id="parent">
+	<div id="child">
+		국민은행 연수과정
+	</div>
+</div>
+
+<div id="article">
+	2023-08-08 Today Schedule
+</div>
+
+</body>
+</html>

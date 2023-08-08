@@ -3,10 +3,10 @@ package com.card.vo;
 import java.util.ArrayList;
 
 public class Cust {
-	private String ssn;
-	private String custName;
-	private String custAddress;
-	private String phone;
+	private String ssn; 		/* ssn */
+	private String custName; 	/* cust_name */
+	private String custAddress; /* cust_address */
+	private String phone;		/* phone */
 	
 	ArrayList<Purchase> purchaseHistory;
 	

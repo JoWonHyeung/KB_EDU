@@ -1,9 +1,10 @@
 package com.card.vo;
 
 public class Card {
-	private String cardId;
-	private String companyName;
-	private String expire;
+	private String cardId; 		/* card_id */
+	private String companyName; /* company_name */
+	private String expire; 		/* expire_date */
+	private String grade; 		/* grade */
 	
 	public Card(String cardId,  String expire, String companyName) {
 		super();
@@ -11,6 +12,7 @@ public class Card {
 		this.expire = expire;
 		this.companyName = companyName;
 	}
+	
 	public String getCardId() {
 		return cardId;
 	}
@@ -29,7 +31,11 @@ public class Card {
 	public void setExpire(String expire) {
 		this.expire = expire;
 	}
-	
-	
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	
 }
