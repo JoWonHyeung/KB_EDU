@@ -10,10 +10,6 @@ import com.card.vo.Card;
 import com.card.vo.Cust;
 
 public interface InfoHandlerDAO {
-    Connection getConnect() throws SQLException;
-    void closeAll(PreparedStatement ps, Connection conn)throws SQLException;
-    void closeAll(ResultSet rs, PreparedStatement ps, Connection conn)throws SQLException;
-
     void register(Cust cust) throws SQLException, DuplicateSSNException;
     void register(Card card)throws SQLException, DuplicateSSNException;
 

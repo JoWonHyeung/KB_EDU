@@ -15,7 +15,7 @@ import com.card.vo.Purchase;
 
 import config.ServerInfo;
 
-public class Test {
+public class DAOTest {
 
 	public static void main(String[] args) throws SQLException, DuplicateSSNException, RecordNotFoundException {
 		InfoHandlerDAOImpl info = InfoHandlerDAOImpl.getInstance();
@@ -110,7 +110,8 @@ public class Test {
 		service.printAlgorithm();
 
 	}
-	static { //Global Initailization(글로벌 초기화)
+	
+	static {
 		try {
 			Class.forName(ServerInfo.DRIVER_NAME);
 			System.out.println("Driver Loading Success....");

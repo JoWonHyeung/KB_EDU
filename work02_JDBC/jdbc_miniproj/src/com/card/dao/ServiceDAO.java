@@ -15,7 +15,7 @@ public interface ServiceDAO {
     Map<String, Integer> getPurchaseByCategory(String ssn) throws SQLException; //카테고리별 소비 분석
 	ArrayList<Purchase> getPurchaseByFiltering(String companyName,String ssn, int criteria, boolean flag) throws SQLException; //필터
 	int getTotalAmount(String ssn) throws SQLException; //총합계
-	void checkGrade(String companyName, String ssn, String name) throws SQLException;
-	ArrayList<Purchase> getPurchase() throws SQLException;
-	void printAlgorithm() throws SQLException;
+	void getGrade(String companyName, String ssn, String name) throws SQLException; //해당 사용자의 등급 산출
+	void printAlgorithm() throws SQLException; 		
+	ArrayList<Purchase> getPurchase() throws SQLException;						//모든 사용자의 구매이력
 }

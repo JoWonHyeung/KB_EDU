@@ -211,7 +211,7 @@ public class ServiceDAOImpl implements ServiceDAO{
 	}
 
 	@Override
-	public void checkGrade(String companyName, String ssn, String name) throws SQLException {
+	public void getGrade(String companyName, String ssn, String name) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

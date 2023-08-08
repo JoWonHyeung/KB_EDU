@@ -1,4 +1,4 @@
-package com.card.algorithm.test;
+package com.card.test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

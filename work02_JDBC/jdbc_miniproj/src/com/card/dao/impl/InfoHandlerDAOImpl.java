@@ -18,35 +18,33 @@ import config.ServerInfo;
 public class InfoHandlerDAOImpl implements InfoHandlerDAO {
 	
 	private static InfoHandlerDAOImpl dao = new InfoHandlerDAOImpl();
+	
 	private InfoHandlerDAOImpl(){
 		System.out.println("CustomDAOImpl Creating...Using Singletone");
 	}
+	
 	public static InfoHandlerDAOImpl getInstance() {
 		return dao;
 	}
-	
-	
 
-	@Override
+	//공통 로직
 	public Connection getConnect() throws SQLException {
 		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
 	    System.out.println("DB Connect....");        
 	    return conn; 
 	}
-
-	@Override
+	
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
 		if(ps!=null) ps.close();
 	    if(conn!=null) conn.close();   
 	}
 
-	@Override
 	public void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
 		 if(rs!=null) rs.close();
 		    closeAll(ps,conn);  
 	}
 	
-	//ssn 여부 확인
+	//비즈니스 로직
 	private boolean isExist(Cust cust, Connection conn) throws SQLException{
 	    String query ="SELECT ssn FROM cust WHERE ssn=?";
 	    PreparedStatement ps = conn.prepareStatement(query);
