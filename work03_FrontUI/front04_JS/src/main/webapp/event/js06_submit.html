@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<script>
+function send(){
+	let id = document.querySelector("#userId");
+	if(id.value != ""){
+		return confirm("정보를 정말 전송하시겠습니까?");
+	
+		//폼에 입력된 모든 값을 가지고 action으로 바로 전송하는 함수...submit()
+		document.querySelector("#memberFrm").submit();
+	}
+	
+}
+</script>
+<body>
+<h2>Form으로 전송한 값 서버에서 받아서 처리하기</h2>
+
+<form action="index.jsp" method="get" id="memberFrm">
+아이디 : <input type="text" name="userId" id="userId"><br/><br/>
+이  름 : <input type="text" name="userName" id="userName"><br/><br/>
+주  소 : <input type="text" name="userAddr" id="userAddr"><br/><br/>
+<input type="submit" value="DataSend" onclick="send()">
+</form>
+</body>
+</html>

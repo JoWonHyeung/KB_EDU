@@ -1,0 +1,46 @@
+<!-- 
+폼에 입력된 값에 따라서 서로 다른  이벤트가 진행
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/*
+   1. 폼에 입력된 값이 없다면...나이는 반드시 입력하세요~~메세지 띄우고
+   2. 숫자대신에 문자가 입력되면...나이는 숫자로 반드시 입력하세요~~메세지 띄우고(isNaN(v))
+   3. 입력된 값이 19이상이라면....당신은 성인인증 되셨습니다...메세지 띄우고
+   4. 입력된 값이 19미만이라면....당신은 미성년자 입니다....메세지 띄우고
+   5. 모든 경우에 입력된 값이 리셋...포커스는 다시 AGE폼에 맞춰지도록..
+   
+   form안에 입력된 값을 받아오는 js 속성.. value!!!
+ */
+	function checkAge(){
+		var agebox = document.ageForm.age;
+		if(agebox.value==""){//값이 입력되지 않았다면
+			alert("나이는 반드시는 입력하세요...");
+		}else if(isNaN(agebox.value)){ //isNaN()...Not A Number(숫자가 아니라면)
+			alert("나이는 반드시 숫자로 입력...");
+		}else if(agebox.value >= 19){
+			alert("당신은 성인인증 인증 되었습니다...입장하세요...");
+			//js에서 다른 사이트로 이동할 때....
+			location.href = "adult.jsp";
+		}else if(agebox.value < 19){
+			alert("당신은 미성년자 입니다...")
+		}
+	}
+	
+	agebox.focust();
+	agebox.value="";
+</script>
+
+</head>
+<body>
+<form name="ageForm">
+	나이 <input type="text" name="age">
+	<button onclick="checkAge()">나이 확인</button>
+</form>
+
+</body>
+</html>

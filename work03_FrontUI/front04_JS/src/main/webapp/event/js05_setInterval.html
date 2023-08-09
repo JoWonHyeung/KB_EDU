@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var count = 0;
+
+onload = function() {
+	setInterval(() => {
+		let messages = [
+			"안녕하세요",
+			"hello",
+			"Bonjour"
+		];
+		
+		let header = document.querySelector("h2");
+		header.innerHTML = messages[count++];
+		if(count == 3)
+			count = 0 ;
+	}, 2000);
+}
+</script>
+</head>
+<body>
+
+<h1>National Greeting Message!!!</h1>
+<h2 style="color:crimson">안녕하세요...</h2>
+</body>
+</html>

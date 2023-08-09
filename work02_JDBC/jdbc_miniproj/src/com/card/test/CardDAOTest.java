@@ -15,7 +15,7 @@ public class CardDAOTest {
 	public static void main(String[] args) throws Exception{
 		CardDAOImpl dao = CardDAOImpl.getInstance();
 		
-		beforeEach();
+		//beforeEach();
 		
 //		System.out.println("================= card register ================");
 //		dao.register(new Card("993-999-999", "2021-01-03", "삼성"));
@@ -29,7 +29,7 @@ public class CardDAOTest {
 //		System.out.println("================= card delete... RecordNotFound... ================");
 //		dao.delete("994-999-999");
 		
-		afterEach();
+		//afterEach();
 	}
 	
 	private static void beforeEach() throws SQLException {

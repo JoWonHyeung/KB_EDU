@@ -1,0 +1,73 @@
+<!-- 
+1. 요소들의 정렬은 flex-direction (row | column)
+
+2. 요소들 간의 정렬
+   기본축 배치에 있어서 요소들간의 정렬 :: justify-content
+   (기본축 : 중앙정렬)
+
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	
+	body{
+		background-color: #f9fafc;
+		margin: 60px;
+	}
+	
+	.container{
+		border: 5px dashed #cacfd9;
+		width: 500px;
+		height: 500px;
+		
+		/*
+			flex 정렬 추가
+			flex-direction:row가 디폴트로 동작한다..
+			왼편에서 오른편으로 요소가 배치됨...
+		*/	
+		display: flex;	
+		/* justify-content: center;  */ 
+		/* justify-content: flex-end;  */
+		/* justify-content: flex-start;  */
+		
+		/* justify-content: space-around; */
+		/* justify-content: space-between; */ /* 기본축 방향으로 양끝을 늘려서 배치... 가장 많이 사용*/
+		justify-content: space-evenly; /* 빈공간의 크기가 모두 동일하도록 정렬*/
+	}
+	
+	.box{
+		border-radius: 15px;
+		color: #f9fafc;
+		padding: 30px;
+	}
+	
+	.red{
+		background-color: Tomato;
+	}
+	
+	.green{
+	 	background-color: MediumSeaGreen;
+	 	
+	 }
+	 
+	 .blue{
+	 	background-color: DodgerBlue;
+	 }
+	 
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="red box">RED</div>
+	<div class="green box">GREEN</div>
+	<div class="blue box">BLUE</div>
+</div>
+</body>
+</html>

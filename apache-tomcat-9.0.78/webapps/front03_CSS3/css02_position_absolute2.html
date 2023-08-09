@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body{
+		background-color: #f9fafc;
+		margin: 60px;
+	}
+	.red{
+		background-color: #e46e80;
+		width: 500px;
+		height: 500px;
+		
+		/* relative 지정 */
+		position: relative;
+	}
+		
+	.green{
+		background-color: #32b9c1;
+		width: 300px;
+		height: 300px;	
+		
+	}
+		
+	.blue{
+		background-color: #5195ee;
+		width: 100px;
+		height: 100px;	
+		/*
+			[absolute]
+			1. 포지셔닝된 가장 가까운 조상요소(green)를 기준으로 위치를 잡는다...
+			2. orange 요소도 원래 위치를 고수할 수 없다...
+			blue는 absolute
+			bottom: 40px;
+		*/
+		
+		position: absolute;
+		bottom: 40px;
+		right: 10px;
+	}
+	
+	.orange{
+		background-color: #f18575;
+		width: 100px;
+		height: 100px;
+	}
+</style>
+</head>
+<body>
+
+<div class="red">
+	<div class="green">
+		<div class="blue"></div>
+		<div class="orange"></div>
+	</div>
+</div>
+</body>
+</html>

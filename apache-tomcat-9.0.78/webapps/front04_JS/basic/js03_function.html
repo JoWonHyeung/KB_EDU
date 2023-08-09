@@ -1,0 +1,44 @@
+<!-- 
+javascript에서 함수를 선언하는 방법
+1. 익명함수 선언법
+2. 선언적 함수 선언법
+3. ECMA2015(es6 문법)
+	Arrow 함수선언법
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//1. 익명함수 재정의
+/*
+ var func = function(){
+	alert("func A...");
+}
+
+var func = function(){
+	alert("func B...");
+}
+
+func(); 
+ 
+ */
+ 
+//2. 선언적 함수 정의 -> 익명함수와 다르게 메모리에 미리 올려둔다.
+func();
+
+function func() {
+	 alert("func A....");
+}
+
+function func() {
+	 alert("func B....");
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

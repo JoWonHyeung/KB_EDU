@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function choiceMenu(){
+		var menus = document.frm.menu;
+		//alert(menus.length);
+		
+		var str = "";
+		for(var i = 0; i < menus.length; i++){
+			if(menus[i].checked) str += menus[i].value + " ";
+			menus[i].checked = false;
+		}
+		
+		if(str == "") alert(" 하나의 메뉴는 선택해주세요");
+		else alert(" 당신이 선택한 메뉴들은 [" + str + "]입니다...");
+		
+	}
+</script>
+
+</head>
+<body>
+
+<form name="frm">
+    <strong>오늘 먹고 싶은 점심 메뉴를 다 고루세요...</strong><br><br>
+    <input type="checkbox" name="menu" value="된장찌개">된장찌개<br>
+    <input type="checkbox" name="menu" value="김치찌개">김치찌개<br>
+    <input type="checkbox" name="menu" value="카레라이스">카레라이스<br>
+    <input type="checkbox" name="menu" value="우동">우동<br>
+    <input type="button" value="CHOICE" onclick="choiceMenu()">
+
+</form>
+
+</body>
+</html>

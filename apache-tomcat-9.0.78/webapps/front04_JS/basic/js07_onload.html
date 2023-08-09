@@ -1,0 +1,34 @@
+<!-- 
+1. js에서 onload 함수가 필요한 이유
+2. 복합연산자 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//1. 복합연산자 사용
+let list = '';
+list += '<ul>';
+list += '<li>Hello</li>';
+list += '<li>Javascript!!</li>';
+list += '</ul>';
+
+//html 모든 요소들이 다 메모리에 올라가고나서 실행되도록 하는 기능
+onload = function(){
+	//2. document안에 있는 특정한 요소에 출력이 되도록
+	document.getElementById("wrap").innerHTML = list;
+}
+
+
+</script>
+</head>
+<body>
+<h2 align="center">======================= onload =========================</h2>
+<div id="wrap">
+
+</div>
+</body>
+</html>

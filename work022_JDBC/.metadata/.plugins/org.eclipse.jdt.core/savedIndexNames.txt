@@ -1,8 +1,0 @@
-INDEX VERSION 1.131+C:\KB_EDU\work022_JDBC\.metadata\.plugins\org.eclipse.jdt.core
-3067115553.index
-1608121644.index
-2502104953.index
-1865797976.index
-878146230.index
-1912098298.index
-3572709914.index
