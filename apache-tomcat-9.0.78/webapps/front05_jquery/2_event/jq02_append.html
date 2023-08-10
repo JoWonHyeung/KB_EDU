@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>val()|text(),html()</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){  
+		$('button').on('click',function(){
+			var text1 = "<p>KB IT's your life</p>";
+			
+			//p태그 영역에 있는 내용을 받아온다...
+			var text2 = $('p').text(); // or .html() 도 가능하다...
+			
+			var text3 = document.createElement('p');
+			text3.innerHTML = "KB IT's your life"; // <p>KB IT's your life</p> 와 같다...
+			
+			/*
+			$('body')
+				.append(text1)
+				.append(text2)
+				.append(text3);
+			*/
+			
+			$('body').append(text1,text2,text3);
+		
+		});//click
+	});//ready
+</script>
+</head>
+<body>
+	<p>This is a paragraph.</p>
+	<button>Append text</button>	
+</body>
+</html>

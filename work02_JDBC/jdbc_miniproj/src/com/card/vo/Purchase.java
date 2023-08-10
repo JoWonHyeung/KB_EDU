@@ -12,7 +12,6 @@ public class Purchase {
 	
 	
 	public Purchase(int id, int price, String ssn, String cardId, String day, String category, String companyName) {
-		super();
 		this.id = id;
 		this.price = price;
 		this.ssn = ssn;
@@ -24,7 +23,6 @@ public class Purchase {
 
 
 	public Purchase(int price, String ssn, String cardId, String day, String category, String companyName) {
-		super();
 		this.price = price;
 		this.ssn = ssn;
 		this.cardId = cardId;
@@ -34,7 +32,6 @@ public class Purchase {
 	}
 
 	public Purchase(String day, String category, String companyName) {
-        super();
         this.day = day;
         this.category = category;
         this.companyName = companyName;

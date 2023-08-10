@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>영화 예매</title>
+<style type="text/css">
+	#first{
+		width: 600px;
+		height: 900px;
+		margin: 0 auto;
+	}
+	h1,h2{
+		text-align: center;
+	}
+	img{
+		margin-left: 150px;
+	}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		/* 조조 display */
+		$('#jojo').css('display','none');	
+		
+		/* 인원 & 금액 */
+		$('#people').css('text-align','right');
+		$('#price').css('text-align','right');
+		
+		/* 옵션 */
+		$('#option').css('display','none');
+		
+		//극장을 선택하면...선택한 극장값을 받아서 alert창으로 출력
+		$('select').change(function(){
+			var theater = $(this).val();
+			//alert(theater);
+		});
+		
+		/* 시간 선택에 따른 display & hidden tag Value 설정*/
+		$('.time').click(function(){
+			$('#people').val('0');
+			$('#price').val('0');
+			var time = $(this).val();
+			//시간이 08:30 / 그 외시간...조건문
+			if(time == "08:30"){
+				/*
+				조조가 보이도록
+				일반은 안보이도록
+				*/
+				$('#jojo').css('display','inline');
+				$('#ilban').css('display','none');
+				
+				$('#cost').val(5000);
+			}else{
+				/*
+				일반이 보이고
+				조조가 안보이도록
+				*/
+				$('#jojo').css('display','none');
+				$('#ilban').css('display','inline');
+				$('#cost').val(9000);
+			}
+		});
+		
+		/* 가격 합산 */
+		$('#people').change(function(){
+			$('#price').val($('#cost').val() * $('#people').val());
+		});
+		
+		/* 옵션 display */
+		$('#op').click(function(){
+			if(this.checked){
+				$('#option').css('display','block');
+			}else{
+				$('#option').css('display','none');
+			}
+			
+		});
+	});
+</script>
+</head>
+<body>
+
+<div id="first">
+<h1>KBStar Theater</h1>
+<h2>밀수 영화 예매</h2>
+<img alt="tom poster" width="300"  height="400" src="https://search2.kakaocdn.net/argon/229x0_80_wr/6equGs4YbSh">
+<p></p>
+<p></p>
+
+<form>
+<label>상영관</label>
+<select>
+	<option>CGV</option>
+	<option>롯데시네마</option>
+	<option>메가박스</option>
+	<option>프리머스</option>
+	<option>다른극장</option>
+</select>
+
+<label>날짜 선택</label><input type="date"/>
+	<fieldset>
+		<legend size=30>시간선택</legend>
+		<input type="radio" name="time" value="08:30" class="time" checked="checked"/><label>08:30</label>
+		<input type="radio" name="time" value="11:00" class="time"  /><label>11:00</label>
+		<input type="radio" name="time" value="14:20" class="time"/><label>14:20</label>
+		<input type="radio" name="time" value="17:25" class="time"/><label>17:25</label>
+		<input type="radio" name="time" value="20:10" class="time"/><label>20:10</label>
+		<input type="radio" name="time" value="23:05" class="time" checked="checked"/><label>23:05</label>
+	</fieldset>
+		<p/>
+		<label>요금</label>&nbsp;&nbsp;<span id="jojo"> <del>W9,000</del>&nbsp;&nbsp; <ins>W5,000</ins></span><span id="ilban" >W9,000</span><p/>
+		<input type="hidden" id="cost" value="9000" />
+		<label>인원</label> <input type="number" required="required" id="people" value="0"/><p/>
+		<label>금액</label> <input type="number" readonly="readonly" id="price" value="0"/>
+		<p>
+		<input type="checkbox" id="op" checked="checked"/><label>옵션</label>
+	<div id="option">
+		<fieldset>
+			<input type="checkbox" name="popcorn"/><label>팝콘</label>
+			<input type="checkbox" name="cola"/><label>콜라</label>
+		</fieldset>
+	</div>
+</form>
+</body>
+</div>
+</html>

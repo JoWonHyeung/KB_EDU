@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>selector</title>
+<style>
+
+</style>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script>
+	$(function(){  
+		//alert("aaaa")
+		//1.버튼 클릭하면 함수호출...click()
+		$('button').click(function () {
+    		// h2, p 영역의 글씨색깔을  purple  로 지정(color:purple)
+    		$('h2, p').css('color','purple');
+    		
+    		// h2태그의 자식태그인 span을 선택자로 지정...
+    		/*
+    		 h2 span : 자손
+    		 h2 > span : 직계자식
+    		*/
+    		$('h2 span').css('color','red');
+    		
+    		// 첫번째 p태그를 선택자로 지정... 경계선을 1px solid green(css)
+    		//$('p:first').css('border', '1px solid green');
+    		//$('p').first().css('border', '1px solid green');
+    		$('p:eq(0)').first().css('border', '1px solid green'); //중요!!
+		
+			//p태그의 클래스 속성값이 theme인 선택자를 지정...css
+			$('.theme').css('color', 'blue');
+		});		
+	});//onload 함수와 동일...$(function()여러번 정의할수 있다
+	
+	$(function(){  
+		//alert("bbbb")
+	});
+</script>
+</head>
+<body>
+	<h2 id="header">	
+		<span>This is a heading</span>
+	</h2>
+	
+	<p>This is a paragraph.</p>
+	<p class="content">This is another paragraph1.</p>
+	<p class="content theme">This is another paragraph2.</p>
+	
+	<button>Click me to hide paragraphs</button>
+</body>
+</html>

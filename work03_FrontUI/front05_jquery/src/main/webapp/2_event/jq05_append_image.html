@@ -1,0 +1,47 @@
+!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.angel
+	{
+		border:2px solid black; width:200px; height:250px;
+	
+		
+	}
+	
+	.center{
+		text-align: center;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){  
+		//1. 타이틀을 부착...
+		$('body').append('<h2>좋아하는 연예인들입니다...</h2>');
+		
+		var img1 = "<img src='../image/1.jpg'>";
+		var img2 = "<img src='../image/2.jpg'>";
+		var img3 = "<img src='../image/3.jpg'>";
+		
+		var title = "<h3>최근 트렌드</h3>";
+		
+		//2. 화면에 위의 변수를 부착 타이틀 다음에 해당 연예인들 이미지가 부착되도록
+		$('body').append(title, img1,img2,img3);
+		
+		//3. 이미지는 css를 적용
+		$('img').addClass('angel');
+		
+		//4. h2태그의 내용이 가운데 정렬되도록 한다.
+		$('h2').addClass('center');
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,62 @@
+<!-- 
+form 태그의 속성을 선택자로 지정하는 방법
+::
+tagname[name=value]
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(function() {
+	//1. input태그, type=text인 선택자 지정
+	//form 안에 있는 값을 받아올 때 value, val()
+	//js : value = "hello"
+	//jquery : val("hello")
+	$('input[type=text]').val("hello"); //중요!!!
+	//$('input:text').val("hello"); -> 모든 input에 다 입력된다
+	
+	//2. name이라는 속성값 중에서 한국이라는 단어가 포함(*)된 선택자를 지정... 배경색을 yellow
+	$('input[name*=한국]').css('background','yellow');
+
+	//속성값이 KO로 시작하는 선택자 지정...
+	$('input[value^=KO]').css('color','red');
+	
+	//속성값이 '사람'으로 끝나는 선택자 지정...
+	$('input[value$=사람').css('color','green');
+});
+</script>
+</head>
+<body>
+<h3> 폼 속성 선택자 사용법</h3>
+<input type="text">
+<input name="한국" value="한국사람">
+<input name="한국인" value="KO한국인">
+<input name="한국 민" value="한국 민">
+<input name="대 한국 민" value="대 한국 민">
+
+<br><hr><br>
+
+<input id="한국" value="한국사람">
+<input id="한국인" value="KO한국인">
+<input id="한국 민" value="한국 민">
+<input id="대 한국 민" value="대 한국 민">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

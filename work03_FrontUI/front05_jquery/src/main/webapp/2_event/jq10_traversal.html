@@ -1,0 +1,118 @@
+jq07_hover.html<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table tr td{ border: 2px solid black; margin: 10px; width: 80px; height: 90px;}
+	.small img{ border: none; margin: 10px; width: 80px; height: 90px;}
+	.large img{ width: 450px;}
+	.hover{ background: lime; color: black; font-weight: bold;}
+	
+	.css{ font-size: 12px; font-weight: bold; color: red;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {	
+		//1. 마우스가 작은 이미지 영역안으로 들어가면 hover 발생하도록 선택자와 함수를 연결
+		$('.small').hover(
+				function() {
+				//mouseenter
+					//$(this).closest('td').addClass('hover');	 		
+					$(this).parent().addClass('hover');
+					
+					
+					//2. 마우스가 진입한 이미지의 이름을 받아와서... 큰 이미지의 소스값에 할당
+					var imageName = $(this).attr('href')
+					//alert(imageName);
+					
+					$('.large').children().fadeOut(1000);
+					$('.large').children().attr('src',imageName);
+					$('.large').children().fadeIn(3000);
+					
+					
+				}, function(){
+				//mouseleave
+					$(this).closest('td').removeClass('hover');
+			 	}
+		);
+		
+		//3. td태그중에서 p태그를 찾아서
+		$('td').find('p').addClass('css');
+		
+		
+	}); 
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td align="center" width="150" height="200">
+			<a href="../image/2.jpg" class="small">
+				<img alt="" src="../image/2.jpg">
+			</a>
+			<p>박은빈</p>
+		</td>
+		<td width="350" align="center" rowspan="5">
+			<a href="../image/2.jpg" class="large">
+				<img alt="" src="../image/2.jpg">
+			</a>			
+		</td>
+	</tr>
+	<tr>
+		<td align="center" width="150" height="200">
+			<a href="../image/3.jpg" class="small">
+				<img alt="" src="../image/3.jpg">
+			</a>
+			<p>김연아</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" width="150" height="200">
+			<a href="../image/4.jpg" class="small">
+				<img alt="" src="../image/4.jpg">
+			</a>
+			<p>아이유</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" width="150" height="200">
+			<a href="../image/5.jpg" class="small">
+				<img alt="" src="../image/5.jpg">
+			</a>
+			<p>이효리</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" width="150" height="200">
+			<a href="../image/1.jpg" class="small">
+				<img alt="" src="../image/1.jpg">
+			</a>
+			<p>염미정</p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -57,19 +57,25 @@
   	function btn(){
   		 location.href = "http://localhost:8888/workshop04/index.html"
   	}
-  	
-  	function register() {  	
-  		var form = document.querySelector("#regForm");
-  		
-  		if(form.password.value != form.password2.value){
-			  document.querySelector("#password").value = "";
-			  document.querySelector("#password2").value = "";
-			  alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-			  document.querySelector("#password").focus();
-		}
-  		
- 		return true;
-	}//register
+	
+	function register() {
+
+        let password = document.querySelector("#password");
+       let password2 = document.querySelector("#password2");
+
+       if(password.value != password2.value){
+         alert("비밀번호가 일치하지 않습니다.");
+
+        document.querySelectorAll("[type='password']").forEach(function(item,index){
+              item.value=""; 
+        });
+        password.focus(); 
+        return;
+      }//if
+
+      document.querySelector("#regForm").submit();
+
+   }//register
   </script>
   
   <title>IT's KB - register</title>

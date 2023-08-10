@@ -11,7 +11,7 @@ import com.card.vo.Cust;
 import com.card.vo.Purchase;
 
 public interface CustDAO {
-	void buy(Card card, int price)  throws SQLException; 						//결제
+	void buy(Card card, String ssn, String date, String category, int price)  throws SQLException; //결제
 	ArrayList<Purchase> getPurchase(String ssn) throws SQLException;		    //해당 사용자의 구매이력
 	ArrayList<Purchase> getPurchase() throws SQLException;						//모든 사용자의 구매이력
 	ArrayList<Purchase> getPurchaseCompanyDetails(String companyName, String ssn) throws SQLException; //해당 사용자의 세부 회사 내역

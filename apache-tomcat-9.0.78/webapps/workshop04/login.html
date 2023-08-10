@@ -73,6 +73,7 @@
 			document.querySelector("#email").focus();
 			return false;
 		}
+  		
 		if(pwd == ""){
 			alert("비밀번호를 입력하세요.");
 			document.querySelector("#password").focus();
@@ -81,9 +82,7 @@
   		
   		alert("모든 정보가 있습니다.")
 		
-		var form = document.querySelector("#loginForm");
-		form.action = "http://localhost:8888/workshop04/personal.html";
-		form.submit();
+		//e.preventDefault();//페이지 이동 안되도록 막아주는 기능
 	}
 
   </script>
@@ -103,7 +102,7 @@
     <div id="banner">지금 당신의 행복! IT's KB Life!</div>
     <div id="login">
       <h1>Login</h1>
-      <form action="page" id="loginForm">
+      <form action="personal.html" id="loginForm">
         <div class="form-item">
           <label for="email">이메일</label>
 		      <input type="text" id="email">
@@ -113,7 +112,7 @@
 		      <input type="password" id="password">
         </div>
         <hr>
-        <button type="button" onclick="login()">로그인</button>
+        <button type="button" onclick="login()" id="loginBtn">로그인</button>
         
         <button type="button" onclick="btn()">홈</button>
       </form>

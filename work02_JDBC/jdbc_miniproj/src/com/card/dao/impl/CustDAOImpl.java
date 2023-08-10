@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.card.dao.CustDAO;
@@ -47,34 +49,140 @@ public class CustDAOImpl implements CustDAO {
 	}
 	
 	//비즈니스 로직
+	
+	/* 카드 결제 */
 	@Override
-	public void buy(Card card, int price) throws SQLException {
-		// TODO Auto-generated method stub
+	public void buy(Card card, String ssn, String date, String category, int price) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        try {
+            conn = getConnect();
+
+            String query = "INSERT INTO purchase (id, ssn, card_id, day, price, company_name ,category ) VALUES (seq_purchase.nextVal, ?,?,?,?,?,?)";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, ssn);
+            ps.setString(2, card.getCardId());
+            ps.setString(3, date);
+            ps.setInt(4, price);
+            ps.setString(5, card.getCompanyName());
+            ps.setString(6, category);
+
+            ps.executeUpdate();
+            System.out.println(ssn + "회원님이 " + card.getCompanyName() + " 카드(" + card.getCardId() + ")로 " + decFormat.format(price) + "원 결제되셨습니다." );
+        } finally {
+            closeAll(ps, conn);
+        }
 		
 	}
 
+	/* 해당 사용자의 구매이력 */
 	@Override
 	public ArrayList<Purchase> getPurchase(String ssn) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    ArrayList<Purchase> temp = new ArrayList<Purchase>();
+	    
+	    try {
+	        conn = getConnect();
+	        String query = "SELECT card_id, day, price, category, company_name FROM purchase WHERE ssn=?";
+	                    
+	        ps = conn.prepareStatement(query);
+	        
+	        ps.setString(1, ssn);
+	        rs = ps.executeQuery();
+	        
+	        while(rs.next()) 
+	            temp.add(new Purchase(rs.getInt("price"),
+	                    ssn, 
+	                    rs.getString("card_id"),
+	                    rs.getString("day"),
+	                    rs.getString("category"),
+	                    rs.getString("company_name")));
+	            
+	    }finally {
+	        closeAll(rs, ps, conn);
+	    }
+	    
+	    return temp;
 	}
 
 	@Override
 	public ArrayList<Purchase> getPurchase() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    
+	    ArrayList<Purchase> temp = new ArrayList<Purchase>();
+	    
+	    try {
+	        conn = getConnect();
+	        String query = "SELECT ssn, card_id, day, price, category, company_name FROM purchase";
+	                    
+	        ps = conn.prepareStatement(query);
+	        
+	        rs = ps.executeQuery();
+	        
+	        while(rs.next()) 
+	            temp.add(new Purchase( 
+	                    rs.getInt("price"),
+	                    rs.getString("ssn"),
+	                    rs.getString("card_id"),
+	                    rs.getString("day"),
+	                    rs.getString("category"),
+	                    rs.getString("company_name"))
+	            	);
+	    }finally {
+	        closeAll(rs, ps, conn);
+	    }
+	    
+	    return temp;
 	}
 
 	@Override
 	public ArrayList<Purchase> getPurchaseCompanyDetails(String companyName, String ssn) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Purchase> temp = new ArrayList<>();
+	    ArrayList<Purchase> history = getPurchase(ssn);
+	    
+	    for(Purchase p : history) {
+	        if(p.getCompanyName().equals(companyName)) {
+	            temp.add(p);
+	        }
+	    }
+	    
+	    return temp;
 	}
 
 	@Override
 	public Map<String, Integer> getPurchaseByCompany(String ssn) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Integer> temp = new HashMap<>();
+        ArrayList<Purchase> history = getPurchase(ssn);
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        
+        try {
+        	conn = getConnect();
+        	
+        	for(Purchase p : history) {
+        		
+        	}
+        	
+        } finally {
+        	closeAll(rs, ps, conn);
+        }
+        
+//        for(Purchase p : history) {
+//            if(temp.containsKey(p.getCompanyName())) 
+//                temp.put(p.getCompanyName(), temp.get(p.getCompanyName()) + p.getPrice());
+//            else 
+//                temp.put(p.getCompanyName(), p.getPrice());
+//        }
+
+        return temp;
 	}
 
 	@Override
