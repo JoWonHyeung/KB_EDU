@@ -9,6 +9,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function() {
+	//1. 입력된 값을 action에 지정된 주소로 바로 전달하는 것이 아니라 jquery함수안에서 검증한 후 여기서 보냄
+	// 폼.submit() 사용한다...
+	$('#memberFrm').submit(function(){
+		//2. 폼에 입력된 값을 각각의 변수로 받는다...
+		//   id, name, addr 지역변수로 폼에 입력된 값을 받는다...
+		let id = $('#userId').val();
+		let name = $('input[name=userName]').val();
+		let addr = $(':text[name=userAddr]').val();
+		
+		return confirm(name + " 님의 정보를 서버로 전송할까요?");
+	});//submit
 	
 });
 </script>

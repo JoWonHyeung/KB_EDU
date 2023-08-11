@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+	//1. 버튼 클릭하면 함수 호출...
+	$('#AjaxBtn').click(function(){
+		//폼에 입력된 값을 id변수로 받아온다...
+		let id = $('#userId').val();
+		
+		//2. 비동기 시작..jquery
+		$.ajax({
+			type:'get',
+			url:'./members.json',
+			data: {'id':id},
+			
+			//서버측에서 응답하는 데이터는 success함수의 인자값으로 통으로 담긴다.
+			success: function(result){
+				var members = result['members']
+				var text = "";
+				
+				$.each(members, function(index,item){
+					text += item['id'] + " ";
+				})
+				
+				//alert(text);
+				$('#resultView').html(text);
+			},//callback
+			fail: function(){
+				
+			}
+		})//ajax
+		
+	})//click
+
+}); //ready
+</script>
+</head>
+<body>
+	ID <input type="text" name="userId" id="userId">
+	<input type="button" value="AjaxBtn" id="AjaxBtn">
+	
+	<div id="resultView"></div>
+</body>
+</html>

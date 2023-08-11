@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function(){
+	//버튼 클릭하면 함수 호출...
+	$('#JQueryAjax').click(function(){
+		//ajax..시작
+		$.ajax({
+			//요청
+			type:"get",
+			url:"./bank.json", //우리는 프로그램이 수행되었다...치고.. 데이타(문자, json)를 받았다...
+			
+			//응답
+			success:function(resultdata){
+				alert(resultdata.data);
+			},
+			error:function(){
+				alert("응답시간 지연~~ Error code ~~");
+			},
+			timeout:1000//1초 동안 서버로부터 응답이 없으면 Error발생
+		})//ajax
+	});//click
+});//ready
+</script>
+<body>
+<input type="button" value="JQueryAjax" id="JQueryAjax">
+</body>
+</html>

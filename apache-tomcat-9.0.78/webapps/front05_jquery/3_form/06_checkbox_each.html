@@ -9,13 +9,39 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function() {
-	/*
-		1. id, name 폼의 공란을 체크...공백일때 alert창 띄우고..포커스 맞추고,페이지 안넘어가게
-		2. checkbox에 하나이상의 값을 놓도록...공백일때 alert창 띄우고
-		3. 하나이상의 값이 입력되면...each 사용해서 alert로 출력
-		4. confirm 창 ...."3개의 취미를 선택하셨습니다..전송하시겠습니까?"...전송/미전송
-		*/
-
+	$("#frm").submit(function(){
+		// 1. id, name 폼의 공란을 체크...공백일때 alert창 띄우고..포커스 맞추고,페이지 안넘어가게
+		let id = $("#id").val();
+		let name = $("#name").val();
+		
+		if(id == "" || name == ""){
+			alert("아이디와 이름 모두 입력해주세요...");
+			$("#id").focus();
+			return false;
+		}
+		
+		var chkArr = [];
+		var text = "";
+		// 2. checkbox에 하나이상의 값을 놓도록...공백일때 alert창 띄우고
+		$("input[name=hobby]:checked").each(function(){
+			chkArr.push($(this).val());
+		});
+		
+		if(chkArr.length == 0){
+			alert("하나 이상 체크해주세요...");
+			return false;
+		}else{
+			//3. 하나이상의 값이 입력되면...each 사용해서 alert로 출력
+			$.each(chkArr,function(index, item){
+				text += item + ", ";
+			});	
+			alert(text);
+		}
+		
+		//4. confirm 창 ...."3개의 취미를 선택하셨습니다..전송하시겠습니까?"...전송/미전송
+		return confirm(chkArr.length + "개의 취미를 선택하셨습니다. 전송할래?..")	
+		
+	})
 });//ready
 </script>
 </head>
