@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function(){
+	//버튼 클릭하면 함수호출...
+	$('#AjaxBtn').click(function(){
+		
+		var id = $('#id').val();
+		
+		$.ajax({
+			type:'post',
+			url:'../JQueryAjax',
+			data: {'id':id}, //데이터를 가지고 넘어간다...
+			success:function(result){ //반드시 callback함수는 인자값이 필요하다...
+				$('#resultView').html(result);
+			},//callback
+			fail:function(xhr, status, message){
+				console.log(xhr,status,message);
+			},
+			
+		});
+		
+	});//click
+
+});//ready
+</script>
+</head>
+<body>
+
+<h2>Servlet 파일로 비동기통신 요청하기</h2>
+ID <input type="text" name="id" id="id">
+<input type="button" value="AjaxBtn" id="AjaxBtn">
+
+<div id="resultView">
+
+</div>
+
+</body>
+</html>

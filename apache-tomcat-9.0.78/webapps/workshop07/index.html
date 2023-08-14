@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/article.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <style>
+
+    article {
+      margin-top: 5px;     
+      display: flex;
+      justify-content: space-between;
+    }
+
+   article .main-item {
+      display: inline-block;
+      width: 33%;
+    }
+
+    article .main-item img{
+      width: 100%;
+    } 
+    
+    article .main-item h2{
+      margin-top: 5px;
+    } 
+
+    article .main-item p{
+      margin-top: 5px;
+    }
+
+    article .main-item button{
+      margin-top: 5px;
+      padding: 5px;
+      float: right;
+      width: 80px;
+      font-size: 18px;
+    }
+  </style>
+   <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var bannerList = [];
+  var bannerIndex = 0;
+
+  $(document).ready( function(){
+	//1. 비동기로 배너광고 ...ajax
+	$.ajax({
+		type:'get',
+		url:'./bannerList.json',
+		
+		success:function(result){
+			$.each(result['banners'], function(index, item){
+				bannerList.push(item['bannerText']);
+			});
+			
+			setInterval(() => {
+				$("#banner").html(bannerList[bannerIndex++]);
+				if(bannerIndex == bannerList.length) bannerIndex = 0;
+			}, 1000);
+		}
+		
+	});
+	  	
+	
+	//2. 버튼 클릭 JQuery	... jQuery 사용
+       $(".main-item-btn").click(function(){
+    	   alert($(this).closest(".main-item").attr("id"));
+       })
+  });//ready
+	
+  
+  
+  </script>
+  <title>IT's KB</title>
+</head>
+<body>
+  <div id="container">
+    <nav>
+      <ul>
+        <li class="nav-item logo"><img src="logo.jpg" alt=""></li>
+        <li class="nav-item"><a href="personal.html">개인</a></li>
+        <li class="nav-item"><a href="business.html">기업</a></li>
+        <li class="nav-item"><a href="login.html">로그인</a></li>
+        <li class="nav-item"><a href="register.html">회원가입</a></li>
+      </ul>
+    </nav>
+    
+    
+    <div id="banner">지금 당신의 행복! IT's KB Life!</div>
+    
+    
+    <article>
+      <div class="main-item" id="10">
+        <img src="https://picsum.photos/200" alt="">
+        <h2>main-item 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button class="main-item-btn">button 1</button>
+      </div>
+      <div class="main-item" id="20">
+        <img src="https://picsum.photos/200" alt="">
+        <h2>main-item 2</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button class="main-item-btn">button 2</button>
+      </div>
+      <div class="main-item" id="30">
+        <img src="https://picsum.photos/200" alt="">
+        <h2>main-item 3</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button class="main-item-btn">button 3</button>
+      </div>
+    </article>
+    
+    <footer>
+      <ul>
+        <li class="address">12345 address 1 address 2 address 3</li>
+        <li class="phone">02-0000-0000</li>
+      </ul>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Tabs - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/sunny/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  /*
+  tabs부분을 클릭하면 p영역에 있는 정적인 데이터가 화면에 형식에 맞게 출력된다.
+  tabs()를 사용하면 된다...
+  
+  이 부분을 Customizing 해보면,
+  tabs부분을 클릭하면 서버상에 있는 특정한 페이지로 요청이 들어가고
+  특정한 페이지(프로그램)가 실행된 결과로 데이터(동적 데이터)가 해당 영역에 출력되도록 로직을 작성...
+  */
+  $(function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="tabpages/content1.jsp">[사회]</a></li>
+    <li><a href="tabpages/content2.jsp">[날씨]</a></li>
+    <li><a href="tabpages/content3.jsp">[정치]</a></li>
+  </ul>
+  
+  
+</div>
+ 
+ 
+</body>
+</html>
