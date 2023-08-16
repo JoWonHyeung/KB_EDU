@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <servlet>
+    <description>ServletConfig를 이용한 서블릿객체 초기화</description>
+    <display-name>GreetingServlet</display-name>
+    <servlet-name>GreetingServlet</servlet-name>
+    <servlet-class>web.servlet.config.GreetingServlet</servlet-class>
+    <init-param>
+      <description></description>
+      <param-name>GREET</param-name>
+      <param-value>Welcome to the JAMBERY</param-value>
+    </init-param>
+    
+    <load-on-startup>1</load-on-startup> 
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GreetingServlet</servlet-name>
+    <url-pattern>/GS</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center bg-dark text-light">
+	<h2>Login Form</h2>
+	</div>
+	
+	<!-- 
+	form태그에서 method 요청 방식은 2가지 존재
+	1) get ("get it") 
+	   단순한 페이지의 연결이 주목적(데이터 전달이 주목적이 아님)
+	   데이터 전달시 용량, 길이에 제약이 있다...
+	   만약에 데이터 전달시 주소창에 스트링으로 붙여서 날라간다...
+	   보안상 우려있는 데이터는 get방식 사용하면 안된다...
+	   
+	   doGet() { 서비스 받는다... }
+	   
+	2) post	 ("post office")
+	   서버측 프로그램에 데이터 전달이 주목적
+	   "내가 ~~이러이러한 데이터를 전송할테니 이 데이터를 처리한 결과를 다시 보내줘"
+	   
+	   많은 양의 데이터이거나 / 보안상 노출되면 안되는 경우 반드시 post방식 사용
+	   데이터 용량, 길이에 제약이 없다...
+	  
+	   doPost() { 서비스 받는다... }
+	 -->
+	<form action="LFS" method="post">
+		ID : <input type="text" name="id"> <br><br>
+		PASSWORD <input type="password" name="password"> <br><br>
+		<input type="submit" value="LOGIN">
+	</form>
+	
+	<p></p>
+    <hr>
+    <p></p>
+    <form action="LFS" method="get">
+		ID : <input type="text" name="id"> <br><br>
+		<input type="submit" value="LOGIN2">
+	</form>
+    
+    <ul>
+        <li><a href="index.html">INDEX PAGE</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
