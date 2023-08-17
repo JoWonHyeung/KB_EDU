@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>Get, Post 방식으로 각각 요청</h2>
+
+<h3>Get("Get it~~") 요청 : 페이지 연결이 주목적(작은 데이터 전달 할 수는 있다...)</h3>
+<a href="form?id=bank&name=kbstar">Form Servlet으로 연결하기</a>
+
+<h3>Post ("Post Office") 요청 : 데이타 전달이 주 목적</h3>
+
+
+<form action="form" method="post">
+ID  <input type="text" name="id">  <br><br>
+PASS  <input type="password" name="password">  <br><br>
+
+<p><strong>사용 가능 기술을 모두 선택...</strong></p>
+<input type="checkbox" name="tech" value="java">JAVA
+<input type="checkbox" name="tech" value="python">PYTHON
+<input type="checkbox" name="tech" value="html5">HTMLT
+<input type="checkbox" name="tech" value="django">DJANGO
+
+<br><br>
+
+<hr>
+<p><strong>당신의 성별을 선택..</strong></p>
+<input type="radio" name="gender" value="F">여성
+<input type="radio" name="gender" value="M">남성
+
+<br><br>
+<input type="submit" value="전송">
+<input type="reset" value="취소">
+</form>
+
+</body>
+</html>
