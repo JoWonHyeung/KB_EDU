@@ -49,7 +49,7 @@ public class MemberServlet extends HttpServlet {
        
 //        PrintWriter out = response.getWriter();
 //        out.println("<h3>Result Page</h3>");
-//        out.println("<h4><a href=result.jsp>여기를 클릭하면 JSP 연결됩니다..</a></4>"); 
+//        out.println("<h4><a href=result.jsp>여기를 클릭하면 JSP 연결됩니다..</a></4>"); //req, rep, thread 모두 제거
 	}
 
 }

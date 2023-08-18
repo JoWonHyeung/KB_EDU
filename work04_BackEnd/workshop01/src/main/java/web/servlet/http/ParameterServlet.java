@@ -29,6 +29,9 @@ public class ParameterServlet extends HttpServlet {
 	}
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        
 		if(request.getMethod().equals("GET")) {
 			String job = request.getParameter("job");
 			String pageNo = request.getParameter("pageNo");
@@ -62,6 +65,7 @@ public class ParameterServlet extends HttpServlet {
 					+ "<p> desc : " + desc + "</p>"
 					+ "</body>");
 			
+			out.close();
 		}
 	}
 

@@ -17,9 +17,9 @@ button {
 		$("#btnSendPost").click(function() {
 			let form = document.querySelector("form");
 			
-			form.action = "params";
-			form.method = "post";
-			form.submit();
+			$("form").attr("action", "params");
+	      	$("form").attr("method", "post");
+	      	$("form").submit();
 		});
 
 	});
