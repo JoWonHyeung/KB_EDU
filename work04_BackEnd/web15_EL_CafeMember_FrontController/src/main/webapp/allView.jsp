@@ -38,6 +38,8 @@
 	<% 
 		}
 	%>
+
+	
 	</table>
 	
 	<a href="index.html">홈으로</a>

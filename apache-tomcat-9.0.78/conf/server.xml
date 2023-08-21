@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector URIEncoding="utf-8" connectionTimeout="20000" maxParameterCount="1000" port="8888" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" maxParameterCount="1000" port="8888" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\wtpwebapps\web02_HttpServlet" path="/web02_HttpServlet" reloadable="true" source="org.eclipse.jst.jee.server:web02_HttpServlet"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\wtpwebapps\ web03_LifeCycle" path="/_web03_LifeCycle" reloadable="true" source="org.eclipse.jst.jee.server: web03_LifeCycle"/></Host>
+      <Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\front01_HTML5" path="/front01_HTML5" reloadable="true" source="org.eclipse.jst.jee.server:front01_HTML5"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\workshop02" path="/workshop02" reloadable="true" source="org.eclipse.jst.jee.server:workshop02"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\front02_CSS3" path="/front02_CSS3" reloadable="true" source="org.eclipse.jst.jee.server:front02_CSS3"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\front05_jquery" path="/front05_jquery" reloadable="true" source="org.eclipse.jst.jee.server:front05_jquery"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\front06_Bootstrap" path="/front06_Bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:front06_Bootstrap"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\front07_JQueryUI" path="/front07_JQueryUI" reloadable="true" source="org.eclipse.jst.jee.server:front07_JQueryUI"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\workshop07" path="/workshop07" reloadable="true" source="org.eclipse.jst.jee.server:workshop07"/><Context docBase="C:\KB_EDU\apache-tomcat-9.0.78\webapps\workshop06" path="/workshop06" reloadable="true" source="org.eclipse.jst.jee.server:workshop06"/></Host>
     </Engine>
   </Service>
 </Server>
