@@ -1,3 +1,4 @@
+<%@page import="servlet.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,11 +9,11 @@
 </head>
 <body>
 
-<h2>register result page</h2>
+<h2>회원 검색 결과</h2>
 
-<%= request.getParameter("name") %>님, 회원 가입 완료!!
-<br>
-<a href="index.html">홈으로</a>
-
+<p>ID : ${vo.id}</p>
+<p>Name : ${vo.name}</p>
+<p>ADDRESS : ${vo.address}</p> 
 </body>
+
 </html>

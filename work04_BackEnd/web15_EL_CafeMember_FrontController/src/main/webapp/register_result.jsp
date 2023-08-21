@@ -10,7 +10,7 @@
 
 <h2>register result page</h2>
 
-<%= request.getParameter("name") %>님, 회원 가입 완료!!
+${param.name} 님, 회원 가입 완료!!
 <br>
 <a href="index.html">홈으로</a>
 
