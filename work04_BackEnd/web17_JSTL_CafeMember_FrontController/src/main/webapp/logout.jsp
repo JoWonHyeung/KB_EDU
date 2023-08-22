@@ -26,7 +26,7 @@
 			session.invalidate();
 	%>
 		<b>로그아웃 되셨습니다...</b><br>
-		<a href="index.html">홈으로</a>
+		<a href="index.jsp">홈으로</a>
 	<% 	
 		}
 	%>

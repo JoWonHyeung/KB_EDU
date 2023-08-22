@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+												 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+     <!--
+     	ㅇ Hello instance 생성 서술적, 선언적 기술
+			1. bean element  
+				- id : instance identifier 
+				- class : instance 생성 Bean (FQCN)
+     -->
+     
+	
+</beans>

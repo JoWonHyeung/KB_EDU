@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource
+		name="jdbc/oracleDB"
+		auth = "Container"
+		type= "javax.sql.DataSource"
+		username="mykb"
+		password = "1234"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+        factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+        url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
+        maxActive="500"
+        maxIdle="30"	
+	/>
+</Context>
