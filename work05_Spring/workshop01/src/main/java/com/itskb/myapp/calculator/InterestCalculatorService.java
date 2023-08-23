@@ -10,6 +10,10 @@ public class InterestCalculatorService {
 	InterestCalculator loanInterestCalculator;		
 	InterestCalculator savingInterestCalculator;	
 	
+	public InterestCalculatorService() {
+		System.out.println("InterestCalculatorService 생성자 호출....");
+	}
+	
 	public void setLoanInterestCalculator(InterestCalculator loanInterestCalculator) {
 		this.loanInterestCalculator = loanInterestCalculator;
 	}

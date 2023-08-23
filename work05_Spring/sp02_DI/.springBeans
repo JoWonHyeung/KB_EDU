@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/resources/config/diceservice.xml</config>
+		<config>src/main/resources/config/userservice01.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

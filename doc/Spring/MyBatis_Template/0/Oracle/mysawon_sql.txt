@@ -1,0 +1,12 @@
+create table mysawon(
+num number constraint mysawon_num_pk primary key,
+id varchar2(20) constraint mysawon_id_nn not null,
+pwd varchar2(20),
+name varchar2(40),
+age number(3),
+hiredate date,
+constraint mysawon_id_uq unique(id));
+
+create sequence mysawon_seq
+increment by 1
+start with 1;

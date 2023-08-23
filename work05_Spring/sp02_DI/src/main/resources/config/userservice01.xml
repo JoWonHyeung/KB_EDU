@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+User user01 = new User();
+user01.setUserId("01유저");
+user01.setAge("01");
+ -->
+
+<!-- 사용자정의빈 :: id="user01" :: setter주입 ::단순 파라미터값 주입 id="01유저", age="01"-->
+<bean id="user01" class="spring.service.domain.User">
+	<property name="userId" value="01유저" />
+	<property name="age" value="01" />
+</bean>
+
+<!-- API 빈 -->
+<bean id="password" class="java.lang.String">
+	<constructor-arg value="7777" />
+</bean>
+
+<!-- 사용자정의빈 :: id="user02" :: setter주입 ::단순 파라미터값 주입 id="02유저", age="03"
+														  password = 위에서 정의한 빈을 참조(password)-->
+<bean id="user02" class="spring.service.domain.User">
+	<property name="userId" value="02" />
+	<property name="age" value="02" />
+	<property name="password" ref="password" />
+</bean>
+
+<!-- 사용자정의빈 :: id="user03" :: DI(주입) 없음-->
+<bean id="user03" class="spring.service.domain.User" />
+
+<!-- 사용자정의빈 :: id="user04" :: 생성자 값 주입 :: 단순 파라미터값 주입("04유저","04","0404"))-->
+<bean id="user04" class="spring.service.domain.User">
+	<constructor-arg value="04유저" index="2" />
+	<constructor-arg value="04" index="0" />
+	<constructor-arg value="0404" index="1" />
+</bean>
+
+<!-- 사용자정의빈 :: id="user05" :: 생성자 값 주입 :: 단순 파라미터값 주입("05유저","05","0505"))-->
+<bean id="user05" class="spring.service.domain.User">
+	<constructor-arg value="05유저" name="userId"/>
+	<constructor-arg value="05" type="int" />
+	<constructor-arg value="0505" index="1" />
+</bean>
+
+</beans>

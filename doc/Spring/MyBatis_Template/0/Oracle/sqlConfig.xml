@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+MyBatis의 핵심이 되는 설정문서로서
+1. db서버에 대한 정보를 가지고 있다...dbconn.properties 파일에 있기에 Wiring되어진다.
+2. DataSource에 대한 정보를 등록
+3. sql Query문에 대한 정보를 등록...mapper.xml파일에 있기에 Wiring 되어진다.
+4. VO를 여기다 매핑시킨다..알리야스를 기억하자!!
+ -->
+<configuration>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

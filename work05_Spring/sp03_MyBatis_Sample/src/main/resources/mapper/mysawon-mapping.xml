@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SawonMapper">
+	<insert id="sawonAdd" parameterType="mySawon">
+		INSERT
+		INTO mysawon (num, id, pwd, name, age, hiredate) 
+		VALUES (mysawon_seq.nextVal, #{id}, #{pwd}, #{name}, #{age}, sysdate) 
+	</insert>
+	
+	<!-- 전체사원정보 검색 ArrayList<MySawon> sawonList(x){ } -->
+	<select id="sawonList" resultType="mySawon">
+		SELECT
+		num, id, name, age, hiredate
+		FROM mysawon
+		ORDER BY num DESC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
