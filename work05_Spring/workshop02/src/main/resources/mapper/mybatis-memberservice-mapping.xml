@@ -59,7 +59,7 @@
 	
 	<select id="idExist" parameterType="string" resultType="int">
 		SELECT
-		CASE WHEN COUNT(*)>0 THEN 1
+		CASE WHEN COUNT(*) > 0 THEN 1
 		ELSE 0 
 		END
 		FROM member

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+	<insert id="registerMember" parameterType="memberVO">
+		INSERT
+		INTO member(id, password, name, address)
+		VALUES(
+			#{id},
+			#{password},
+			#{name},
+			#{address}
+		)
+	</insert>
+	
+	<delete id="deleteMember" parameterType="string">
+		DELETE
+		FROM member
+		WHERE
+		id = #{VALUE}
+	</delete>
+	
+	<update id="updateMember" parameterType="memberVO">
+		UPDATE member
+		SET name=#{name}
+		WHERE 
+		id=#{id}
+	</update>
+	
+	<select id="showAllMember" resultType="memberVO">
+		SELECT
+		id,
+		password,
+		name,
+		address
+		FROM member
+	</select>
+	
+	<select id="getMember" parameterType="string" resultType="memberVO">
+		SELECT
+		id,
+		name,
+		address
+		FROM member
+		WHERE 
+		id=#{VALUE}
+	</select>
+	
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		SELECT
+		id,
+		name,
+		address
+		FROM member
+		WHERE 
+		id=#{id} AND password=#{password} 
+	</select>
+	
+	<select id="idExist" parameterType="string" resultType="int">
+		SELECT
+		CASE WHEN COUNT(*) > 0 THEN 1
+		ELSE 0 
+		END
+		FROM member
+		WHERE
+		id = #{VALUE}
+	</select>
+	
+	<!-- 별도로 만듬 -->
+	<select id="deleteAllMember" resultType="memberVO">
+		TRUNCATE
+		TABLE
+		member
+	</select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+<!-- 1. DataSource 빈 정의 :: API Bean -->
+<!-- 2. SqlSessionFactory 빈 정의 :: API Bean -->
+<!-- 3. SqlSession 빈 정의 :: API Bean -->
+<!-- 4. UserDAOImpl 빈 정의 :: User Definition Bean -->
+<!-- 5. UserServiceImpl 빈 정의 :: User Definition Bean -->
+
+<context:property-placeholder location="classpath:config/dbconn.properties"/>
+
+<!-- MyBatis Framework API Bean -->
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="${jdbc.oracle.driver}" />
+	<property name="url" value="${jdbc.oracle.url}" />
+	<property name="username" value="${jdbc.oracle.username}" />
+	<property name="password" value="${jdbc.oracle.password}" />
+</bean>
+
+<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="configLocation" value="config/SqlMapConfig01.xml" />
+	<property name="dataSource" ref="dataSource" />
+</bean>
+
+<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+</bean>
+
+<!-- User Definition Bean -->
+<bean id="myBatisUserDAOImpl12" class="mybatis.services.user.impl.MyBatisUserDAOImpl12">
+	<property name="sqlSession" ref="sqlSessionTemplate" />
+</bean>
+
+<bean id="myBatisUserServiceImpl12" class="mybatis.services.user.impl.MyBatisUserServiceImpl12">
+	<property name="userDAO" ref="myBatisUserDAOImpl12" />
+</bean>
+
+</beans>

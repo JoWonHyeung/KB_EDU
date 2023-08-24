@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 이거 완성하면 CRUD 다 해보는 것임 -->
-<mapper namespace="UserMapper03">
+<mapper namespace="UserMapper05">
 	<insert id="addUser" parameterType="user">
 		INSERT
 		INTO users(user_id, user_name, password, age, grade, reg_date)

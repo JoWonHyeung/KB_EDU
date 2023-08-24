@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이거 완성하면 CRUD 다 해보는 것임 -->
+<mapper namespace="UserMapper07">
+
+	<!-- 결과맵을 명시적으로 지정하면 select 태그마다 as 알리야스 사용 안해도 된다... -->
+	<!-- resultType 대신에 resultMap을 앞으로는 사용한다. -->
+	<resultMap type="user" id="useSelectMap">
+		<result property="userId" column="user_id"/>
+		<result property="userName" column="user_name"/>
+		<result property="password" column="password"/>
+		<result property="age" column="age"/>
+		<result property="grade" column="grade"/>
+		<result property="regDate" column="regDate"/>
+	</resultMap>
+	
+	<!-- id가 user01인 사람을 검색하는 쿼리 :: 정적인 쿼리문-->
+	<select id="getUserList01" parameterType="user" resultMap="useSelectMap">
+		SELECT
+		user_id,
+		user_name,
+		password,
+		age,
+		grade,
+		reg_date
+		FROM users
+		WHERE
+		user_id=#{userId}
+	</select>
+	
+	<!-- 
+	동적인 쿼리문:: where절 조건이 달라져도 하나의 select문으로 여러가지 조건을 한 번에 처리함...
+	ex)
+	userName='홍길동' & age='30'인 사람을 검색
+	userName='홍길동'
+	age='30'
+	모든 사람 검색
+	 -->
+	 <select id="getUserList" parameterType="user" resultMap="useSelectMap">
+	 	SELECT
+		user_id,
+		user_name,
+		password,
+		age,
+		grade,
+		reg_date
+		FROM users
+		<where>
+			<if test="userName != null">
+				user_name LIKE #{userName}
+			</if>		
+			<if test="age != null">
+				OR age LIKE #{age}
+			</if>
+		</where>
+		ORDER BY user_id DESC
+	 </select>
+	 
+	
+</mapper>

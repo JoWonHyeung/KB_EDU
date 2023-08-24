@@ -5,8 +5,15 @@
 
 <properties resource="config/dbconn.properties"/>
 
+<!-- 오라클에서는 null값을 허용하는 옵션을 지정 :: MySQL에서는 이부분이 기본적으로 내장되어 있다. -->
+<settings>
+	<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+
+
 <typeAliases>
-	<typeAlias type="mybatis.services.domain.User" alias="user"/>
+	<!-- <typeAlias type="mybatis.services.domain.User" alias="user"/> -->
+	<package name="mybatis.services.domain"/>
 </typeAliases>
 
 <environments default="DEVELOPMENT">
@@ -26,6 +33,10 @@
 	<mapper resource="mapper/mybatis-userservice-mapping01.xml"/>	
 	<mapper resource="mapper/mybatis-userservice-mapping02.xml"/>	
 	<mapper resource="mapper/mybatis-userservice-mapping03.xml"/>	
+	<mapper resource="mapper/mybatis-userservice-mapping05.xml"/>	
+	<mapper resource="mapper/mybatis-userservice-mapping07.xml"/>	
+	<mapper resource="mapper/mybatis-userservice-mapping08.xml"/>	
+	<mapper resource="mapper/mybatis-userservice-mapping10.xml"/>	
 </mappers>
 
 </configuration>
