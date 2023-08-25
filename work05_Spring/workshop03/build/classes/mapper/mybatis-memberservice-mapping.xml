@@ -67,7 +67,7 @@
 		id = #{VALUE}
 	</select>
 	
-	<!-- 별도로 만듬 -->
+	<!-- 추가 -->
 	<select id="deleteAllMember" resultType="memberVO">
 		TRUNCATE
 		TABLE

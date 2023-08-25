@@ -43,14 +43,18 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public MemberVO login(MemberVO memberVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(MAPPER_NAME + "login", memberVO);
 	}
 
 	@Override
 	public int idExist(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(MAPPER_NAME + "idExist",id);
+	}
+	
+	/* 추가 */
+	@Override
+	public void deleteAllMember() {
+		sqlSession.delete(MAPPER_NAME + "deleteAllMember");
 	}
 
 }

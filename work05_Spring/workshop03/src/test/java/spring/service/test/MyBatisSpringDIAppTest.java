@@ -1,12 +1,7 @@
 package spring.service.test;
 
-import java.io.Reader;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -59,43 +54,42 @@ public class MyBatisSpringDIAppTest {
 			System.out.println();
 			
 			/* [getMember Test] */
-//			//'차무식'정보 가져오기
+			//'차무식'정보 가져오기
 			System.out.println("=== getMember Test ===");
 			System.out.println(memberService.getMember("meshjo").toString());
 			
 			System.out.println();
-//			
-//			/* [idExist Test]*/
-//			System.out.println("=== idExist Test ===");
-//			if((Integer)session.selectOne("idExist","aa11aass") == 1) {
-//				System.out.println("'aa11aass' 아이디가 존재합니다...");
-//			}
-//			
-//			System.out.println();
-//			
-//			/* [Login Test] */
-//			System.out.println("=== login Test ===");
-//			MemberVO loginMember1 = new MemberVO("aa11aass","4444","조인성","상암");
-//			MemberVO loginMember2 = new MemberVO("a","4","윤석열","용산");
-//			MemberVO loginSuccessMember = session.selectOne("login",loginMember1);
-//			MemberVO loginFailMember = session.selectOne("login",loginMember2);
-//			
-//			if(loginSuccessMember != null)
-//				System.out.println("로그인 성공 테스트 완료");
-//			if(loginFailMember == null)
-//				System.out.println("로그인 실패 테스트 완료 ");
+			
+			/* [idExist Test]*/
+			System.out.println("=== idExist Test ===");
+			if(memberDAO.idExist("aa11aass") == 1) {
+				System.out.println("'aa11aass' 아이디가 존재합니다...");
+			}
+			
+			System.out.println();
+			
+			/* [Login Test] */
+			System.out.println("=== login Test ===");
+			MemberVO loginMember1 = new MemberVO("aa11aass","4444","조인성","상암");
+			MemberVO loginMember2 = new MemberVO("a","4","윤석열","용산");
+			MemberVO loginSuccessMember = memberService.login(loginMember1);
+			MemberVO loginFailMember = memberService.login(loginMember2);
+			
+			if(loginSuccessMember != null)
+				System.out.println("로그인 성공 테스트 완료");
+			if(loginFailMember == null)
+				System.out.println("로그인 실패 테스트 완료 ");
 			
 		}finally {
 			/* Test를 위해서 모든 코드 실행 후에 임의로 넣은 데이터 값을 삭제해준다.*/
-			//afterEach(session);
+			afterEach(memberDAO);
 		}
 		
 	}
 	
-	public static void afterEach(SqlSession session) {
-		session.delete("deleteAllMember");
-		session.commit();
-		session.close();
+	public static void afterEach(MemberDAO memberDAO) {
+		memberDAO.deleteAllMember();
+		
 	}
 	
 

@@ -12,4 +12,5 @@ public interface MemberDAO {
 	MemberVO getMember(String id);
 	MemberVO login(MemberVO memberVO);
 	int idExist(String id);
+	void deleteAllMember();
 } 
