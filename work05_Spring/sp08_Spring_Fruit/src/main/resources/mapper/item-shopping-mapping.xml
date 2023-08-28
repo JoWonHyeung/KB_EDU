@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--	
+	mybatis-userservice-mapping.xml : SQL 를 갖는 설정화일 (MetaData) 
+	- MyBatis Framework 은 XML MetaData를 사용 SQL구문을 관리하며,
+	  (SQL은 xml 을 통해 적절히 캡슐화 되어 애플리케이선 의 외부로 분리함)
+	- SQL문의 입력(?) / 출력(?)을 매핑한다.  <== 아래의 select element 참조
+ -->
+ 
+<!-- SQL definition -->
+<mapper namespace="ns.sql.ItemMapper">
+	<resultMap type="item" id="selectItemRM">
+		<result property="itemNumber" column="item_id"/>
+		<result property="name" column="item_name"/>
+		<result property="price" column="price"/>
+		<result property="description" column="description"/>
+		<result property="url" column="picture_url"/>
+	</resultMap>
+	
+	<sql id="select-item">
+		SELECT
+		item_id,
+		item_name,
+		price,
+		description,
+		picture_url
+		FROM 
+		item
+	</sql>
+	
+	<select id="getItemList" resultMap="selectItemRM">
+		<include refid="select-item" />
+	</select>
+	
+	<select id="getItem" resultMap="selectItemRM" parameterType="int">
+		<include refid="select-item"/>
+		WHERE item_id=#{VALUE}
+	</select>
+</mapper>

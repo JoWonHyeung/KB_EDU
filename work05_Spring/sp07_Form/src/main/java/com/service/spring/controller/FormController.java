@@ -18,7 +18,6 @@ public class FormController { //POJO 기반 : Play Old Java Object
 		 * 반환값 바인딩
 		 * 네비게이션
 		 */
-		
 		return new ModelAndView("/WEB-INF/views/form_result.jsp", "info", myName + "님이 사는 곳은 " + myAddr);
 	}
 }
