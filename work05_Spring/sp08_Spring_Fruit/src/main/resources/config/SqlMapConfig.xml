@@ -10,7 +10,6 @@
 	<setting name="jdbcTypeForNull" value="NULL"/>
 </settings>
 
-
 <typeAliases>
 	<!-- <typeAlias type="mybatis.services.domain.User" alias="user"/> -->
 	<package name="com.service.spring.domain" /> <!-- alias="item" -->

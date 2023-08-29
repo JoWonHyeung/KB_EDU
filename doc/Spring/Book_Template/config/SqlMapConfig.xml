@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- <properties resource="config/dbconn.properties" />  -->
+	
+	<!-- 오라클에서는  null값을 허용하는 옵션을 지정 :: MySQL에서는 이부분이 기본적으로 내장되어 있다. -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>	
+		<package name="com.service.spring.domain"/><!-- book, user -->
+	</typeAliases>
+	
+	<!-- 이 부분은  MyBatis Framework 단위테스트용이다. -->
+	<!-- <environments default="DEVELOPMENT">
+		<environment id="DEVELOPMENT">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${jdbc.oracle.driver}"/>
+				<property name="url" value="${jdbc.oracle.url}"/>
+				<property name="username" value="${jdbc.oracle.username}"/>
+				<property name="password" value="${jdbc.oracle.password}"/>
+			</dataSource>
+		</environment>
+	</environments>  -->
+	
+	<mappers>
+		<mapper resource="mapper/book-service-mapping.xml"/>
+		<mapper resource="mapper/userinfo-service-mapping.xml"/>
+	</mappers>
+	
+</configuration>
+
+
+

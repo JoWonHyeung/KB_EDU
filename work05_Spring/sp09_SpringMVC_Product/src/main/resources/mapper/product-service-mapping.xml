@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- 1)(table이름)MAPPER[ItemMAPPER] 2)package(namespace의 sql에 관련된 namespace며, 그 이름은 ItemMapper다 -->
+<mapper namespace="ns.sql.MyProductMapper">
+
+	<!-- 상품 추가하기 -->
+	<!-- 
+		INSERT문 작성시 PK에 해당하는 컬럼값이 디비에서 자동증가하는 값일 때는 주의해야 한다.
+		1) 먼저 DB에서 PK값을 증가시킨다.
+		2) 증가된 그 값을 pvo에 setter로 주입
+		결과적으로 pvo와 디비테이블(rvo)을 완벽하게 동기화 시킨다.
+	 -->
+	 <!-- property는 setter니까 id를 적으면 setId가 된다. 그리고 증가한 값을 받아서 id로 pvo에 넣어준다. 
+		그러면 이미 값이 들어간 상태니까 #{id} 가능하다	 
+	 -->
+	<insert id="addProduct" parameterType="myProduct">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int">
+			SELECT myproduct_seq.nextVal FROM dual
+		</selectKey>
+		INSERT 
+		INTO myproduct(id, name, maker, price)
+		VALUES(#{id}, #{name}, #{maker}, #{price})
+	</insert>
+	
+	
+	<!-- Static SQL문으로 작성 -->
+	<sql id="select-myProduct">
+		SELECT id, name, maker, price
+		FROM myproduct
+	</sql>
+	
+	<!-- 상품명으로 검색 :: 통돌이 세탁기 :: 세탁기만 입력해도 세탁기 종류가 다 나오도록 :: LIKE연산자와 와일드카드(%) 사용 -->
+	<!-- myBatis는 generic으로 넣는다..? -->
+	<select id="findProductByName" parameterType="string" resultType="myProduct">
+		<include refid="select-myProduct"/>
+		WHERE name LIKE '%'||#{VALUE}||'%'
+	</select>
+	
+	<!-- 제조사명으로 검색 :: 대우, 삼성, 현대, 엘지 -->
+	<select id="findProductByMaker" parameterType="string" resultType="myProduct">
+		<include refid="select-myProduct"/>
+		WHERE maker=#{VALUE}
+	</select>
+	
+	<!-- 모든 상품 검색 -->
+	<select id="findProducts" resultType="myProduct">
+		<include refid="select-myProduct"/>
+	</select>
+</mapper>

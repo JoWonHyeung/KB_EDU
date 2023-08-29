@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- MyBatis 단위테스트용 -->
+	<properties resource="config/dbconn.properties"/>
+	<!-- 오라클에서는 null값을 허용하는 옵션을 지정해야 한다. :: MySQL에서는 이 부분이 기본적으로 내장되어 있다.-->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/> <!-- NULL은 대문자로 -->
+	</settings>
+	<typeAliases>
+		<package name="com.service.spring.domain"/> <!-- MyProduct의 alias는 자동적으로 myProduct이 된다. vo가 담긴 패키지 -->
+	</typeAliases>
+	
+	<!-- MyBatis의 단위테스트 용이다. -->
+	<environments default="DEVELOPMENT"> <!-- 둘(environments, environment)이 이름만 같으면 됨 -->
+		<environment id="DEVELOPMENT">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${jdbc.oracle.driver}"/> <!-- dbconn.property의 key값을 넣어야 한다!!!(시험문제) -->
+				<property name="url" value="${jdbc.oracle.url}"/>
+				<property name="username" value="${jdbc.oracle.username}"/>
+				<property name="password" value="${jdbc.oracle.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 여러 테이블이 있으면 이렇게 mappers 안에 여러개의 mapper를 생성 -->
+	<mappers>
+		<mapper resource="mapper/product-service-mapping.xml"/>
+	</mappers>
+</configuration>
