@@ -35,7 +35,9 @@
 	
 	<select id="searchByPrice" parameterType="string" resultType="book">
 		<include refid="select-book" />
-		WHERE price &lt;#{VALUE}
+		<![CDATA[
+			WHERE price <= #{VALUE}
+		]]>
 	</select>
 	
 	<select id="searchByIsbn" parameterType="string" resultType="book">
@@ -48,6 +50,7 @@
 		FROM book
 		WHERE isbn = #{VALUE}
 	</delete>
+	
 	<select id="getIsbn" parameterType="string" resultType="book">
 		<include refid="select-book" />
 		WHERE title = #{VALUE}

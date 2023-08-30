@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-<context:property-placeholder location="classpath:config/dbconn.properties"/>
+	<context:property-placeholder location="classpath:config/dbconn.properties"/>
 
 	<!--  MyBatis Framework API Bean  -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -24,8 +24,11 @@
 		<constructor-arg  ref="sqlSessionFactoryBean"/>
 	</bean>
 
+	<!-- Ajax를 위한 빈을 등록 -->
+	<bean id="JsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" >
+        <property name="contentType" value="text/html;charset=utf-8" />
+    </bean>
 
-	
 	<!-- 4. DaoImpl 빈 등록 -->
 	<!-- 5. ServiceImpl 빈 등록 -->
 	<context:component-scan base-package="com.service.spring" />

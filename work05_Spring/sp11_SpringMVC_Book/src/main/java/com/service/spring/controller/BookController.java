@@ -59,8 +59,6 @@ public class BookController {
 	@RequestMapping("bookSearch.do")
     public ModelAndView search(String searchField ,String searchText, HttpServletRequest request) 
     						throws Exception{  
-		System.out.println(searchField + ", " + searchText);
-		
 		String path =  "book/bookList";
 		List<Book> list = null;
 		
@@ -86,6 +84,7 @@ public class BookController {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
 		return new ModelAndView(path,"list",list);
 	}
 	
@@ -93,9 +92,32 @@ public class BookController {
 	public ModelAndView bookview(String isbn, HttpServletRequest request)
 							throws Exception{
 		//searchByIsbn() ... book/bookView
-		Book book = bookService.searchByIsbn(isbn);
+		String path = "Error";
+		Book book = null;
 		
-		return new ModelAndView("book/bookView","b",book);
+		try {
+			book = bookService.searchByIsbn(isbn);
+			path = "book/bookView";
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return new ModelAndView(path,"b",book);
+	}
+	
+	@RequestMapping("bookDesc.do")
+	public ModelAndView desc(String isbn, HttpServletRequest request) {
+		Book book = null;
+		
+		try {
+			book = bookService.getIsbn(isbn);
+			System.out.println(book);
+		}catch(Exception e) {
+			request.setAttribute("msg", "비동기 통신 오류 발생");
+			System.out.println(e.getMessage());
+		}
+		
+		return new ModelAndView("JsonView","book",book);
 	}
 	
 }

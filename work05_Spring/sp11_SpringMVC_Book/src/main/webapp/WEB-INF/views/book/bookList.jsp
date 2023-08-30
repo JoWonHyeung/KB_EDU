@@ -39,16 +39,50 @@ body, p {
 #bookTable td:nth-child(2) {
 	width: 250px;
 }
+
 #bookTable td:nth-child(1) {
 	width: 150px;
 }
+
 #bookTable td:nth-child(4) {
 	width: 150px;
 }
+
 #bookTable td:nth-child(3) {
 	width: 200px;
 }
+
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+$(function() {
+    $('.subject').mouseover(function() {
+        var isbn = $(this).attr('id');
+        
+        $.ajax({
+            url:"bookDesc.do?isbn=" + isbn,
+            type:"get",
+            dataType:"json", //callback에서 돌아오는 데이터 타입을 지정한다...
+            error:function(xhr, status, message){
+                alert("error :"+message);
+            },//error
+            success:function(data){
+            	alert(data);
+                /*
+                $('#result').html("<h5><font color=red>"
+                        +data["book"].isbn+"<br>"
+                        +data["book"].title+"<br>"
+                        +data["book"].catalogue+"<br>"
+                        +data["book"].author+"<br>"
+                        +"</font></h5>");
+                */
+            }//success
+        });//ajax
+    
+    });//mouseover
+});//function
+</script>
 
 </head>
 <body>
@@ -98,6 +132,8 @@ body, p {
 	<p>
 		<a href='bookForm.jsp'>도서 등록</a> <a href='index.jsp'>메인페이지</a> 
 	</p>
+	
+	<button class="subject">비동기</button>
 </body>
 </html>
 
