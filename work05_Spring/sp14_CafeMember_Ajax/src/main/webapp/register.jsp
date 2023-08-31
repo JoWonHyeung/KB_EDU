@@ -48,7 +48,6 @@ form{
  
     <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
   </form>
-
 </div>
 
 </body>

@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>Register Result Page..</h2>
-<h3><%= request.getParameter("name") %>님 회원가입 성공^^</h3>
+<h3>${name}님 회원가입 성공^^</h3>
 </body>
 </html>
