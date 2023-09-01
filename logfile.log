@@ -1,0 +1,4 @@
+ INFO ({main} AbstractApplicationContext.java[prepareRefresh]:513) [2023-09-01 09:42:14,618] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7de26db8: startup date [Fri Sep 01 09:42:14 KST 2023]; root of context hierarchy
+ INFO ({main} XmlBeanDefinitionReader.java[loadBeanDefinitions]:316) [2023-09-01 09:42:14,665] - Loading XML bean definitions from class path resource [beans/anno.xml]
+ INFO ({main} LogginAdvice.java[logPush]:23) [2023-09-01 09:42:15,104] - 
+check...before logging...

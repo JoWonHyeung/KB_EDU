@@ -10,9 +10,18 @@
 	<property name="suffix" value=".jsp" />	
 </bean>
 
+<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+</bean>
+
+<!--  Ajax를 위한 빈을 등록 -->
+<bean id="JsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" >
+    <property name="contentType" value="text/html;charset=utf-8" />
+</bean>
 
 <!--  3. Business Logic Layer Bean :: Service + Persistence Layer-->
 <context:component-scan base-package="com.service.spring.controller" />
+
 </beans>
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	
+	
+	<!-- 오라클에서는  null값을 허용하는 옵션을 지정 :: MySQL에서는 이부분이 기본적으로 내장되어 있다. -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>	
+		<package name="com.service.spring.domain"/><!-- myProduct -->
+	</typeAliases>	
+
+	<mappers>
+		<mapper resource="mapper/product-service-mapping.xml"/>
+		<mapper resource="mapper/report.xml"/>
+	</mappers>	
+</configuration>
+
+
+

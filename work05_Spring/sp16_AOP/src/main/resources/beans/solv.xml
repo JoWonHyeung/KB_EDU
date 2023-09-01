@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- Target(2) member,product ||| Advice(1) loggin  -->
+<bean id="member" class="spring.aop.solv.MemberService"/>
+<bean id="product" class="spring.aop.solv.ProductService"/>
+
+<bean id="Logging" class="spring.aop.solv.LogginAdvice"/>
+
+<!-- Advice의 어떤 기능이 target 메소드 호출될 때 위빙되는지를 자세히 설정 -->
+<aop:config>
+	<aop:aspect id="LogginAspect" ref="Logging">
+		<aop:pointcut expression="execution(* spring.aop..*(..))" id="pc"/>
+		<aop:around method="logPush" pointcut-ref="pc"/>
+	</aop:aspect>
+</aop:config>
+
+</beans>

@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function(){
-		
 		$('#asynchro').click(function(){
 			$.ajax({
 				type:'get',
@@ -22,12 +21,10 @@
 				}//success
 			})//ajax
 		});//click
-	
 	});
 </script>
 </head>
 <body>
-
 <h2>Index Page....</h2>
 <h2>동기, 비동기 통신</h2>
 <a href="synchro">Synchro 통신...</a>
