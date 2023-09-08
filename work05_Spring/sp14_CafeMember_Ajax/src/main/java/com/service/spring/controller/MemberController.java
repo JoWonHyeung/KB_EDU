@@ -61,7 +61,7 @@ public class MemberController {
         }
         return null;
     }
-	
+	 
 	
 	@RequestMapping("idExist.do")
 	public String idExist(String id, Model model) throws Exception{

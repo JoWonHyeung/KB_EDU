@@ -15,6 +15,7 @@ import com.service.spring.aop.model.ReportService;
 @Aspect
 @EnableAspectJAutoProxy
 public class ReportAspect {
+	
 	@Autowired
 	private ReportService reportService;	
 	
