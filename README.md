@@ -1,10 +1,11 @@
-# KB국민은행 IT's Your Life 4기 
+# :dart: KB국민은행 IT's Your Life 4기 
 
 Java, Spring, MyBatis 기반으로 백엔드 개발에 대해 학습하였습니다.
 
 해당 Repository는 교육 과정에서 정리한 코드들 입니다.
 
-## :bookmark_tabs: 복습
+
+## :bookmark_tabs: 복습중
 
 | 주차   | Tistory                                           |
 | ------ | ------------------------------------------------ |
