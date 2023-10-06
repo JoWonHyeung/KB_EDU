@@ -7,11 +7,11 @@ Java, Spring, MyBatis 기반으로 백엔드 개발에 대해 학습하였습니
 
 ## :bookmark_tabs: 복습중
 
-| 주차   | Tistory                                           |
+| 일차   | Tistory                                           |
 | ------ | ------------------------------------------------ |
-| 1주차 | [1주차](https://meshjo12.tistory.com/40)           |
-| 2주차 | [2주차](https://meshjo12.tistory.com/41)   |
-| 3주차 | [3주차](https://meshjo12.tistory.com/42) |
-| 4주차 | [4주차](https://meshjo12.tistory.com/43)         |
-| 5주차 | [5주차](https://meshjo12.tistory.com/44)         |
-| 6주차 | [6주차](https://meshjo12.tistory.com/45)         |
+| 1일차 | [1일차](https://meshjo12.tistory.com/40)           |
+| 2일차 | [2일차](https://meshjo12.tistory.com/41)   |
+| 3일차 | [3일차](https://meshjo12.tistory.com/42) |
+| 4일차 | [4일차](https://meshjo12.tistory.com/43)         |
+| 5일차 | [5일차](https://meshjo12.tistory.com/44)         |
+| 6일차 | [6일차](https://meshjo12.tistory.com/45)         |
