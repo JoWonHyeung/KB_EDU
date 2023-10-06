@@ -14,3 +14,4 @@ Java, Spring, MyBatis 기반으로 백엔드 개발에 대해 학습하였습니
 | 3주차 | [3주차](https://meshjo12.tistory.com/42) |
 | 4주차 | [4주차](https://meshjo12.tistory.com/43)         |
 | 5주차 | [5주차](https://meshjo12.tistory.com/44)         |
+| 6주차 | [6주차](https://meshjo12.tistory.com/45)         |
