@@ -27,3 +27,4 @@
 | 16일차 | [16일차](https://meshjo12.tistory.com/55)         |
 | 17일차 | [17일차](https://meshjo12.tistory.com/62)         |
 | 18일차 | [18일차](https://meshjo12.tistory.com/63)         |
+| 19일차 | [19일차](https://meshjo12.tistory.com/66)         |
